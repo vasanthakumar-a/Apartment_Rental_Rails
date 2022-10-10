@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apartment_name: MyString
+  location: MyText
+  description: MyText
+  price: 1
+  review: 1.5
+  room_size: 1.5
+  ac: false
+  tv: false
+  wifi: false
+  cctv: false
+  house_keeping: false
+
+two:
+  apartment_name: MyString
+  location: MyText
+  description: MyText
+  price: 1
+  review: 1.5
+  room_size: 1.5
+  ac: false
+  tv: false
+  wifi: false
+  cctv: false
+  house_keeping: false
