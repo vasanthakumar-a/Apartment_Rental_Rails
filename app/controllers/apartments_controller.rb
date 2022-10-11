@@ -21,6 +21,20 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def edit
+    @apartment = Apartment.find(params[:id])
+  end
+
+  def update
+    @apartment = Apartment.find(params[:id])
+
+    if @apartment.update(apartment_params)
+      redirect_to @apartment
+    else
+      render :edit
+    end
+  end
+
   private
   def apartment_params
     params.require(:apartment).permit(:apartment_name, :location, :description, :price, :review, :room_size, :ac, :tv, :wifi, :cctv, :house_keeping)
