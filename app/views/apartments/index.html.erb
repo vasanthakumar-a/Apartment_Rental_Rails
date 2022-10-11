@@ -1,1 +1,9 @@
 <h1>VASANTH</h1>
+
+<ul>
+    <% @apartments.each do |apartment| %>
+    <li>
+        <%= link_to apartment.apartment_name, apartment %>
+    </li>
+    <% end %>
+</ul>
