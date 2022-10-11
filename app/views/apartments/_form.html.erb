@@ -1,0 +1,49 @@
+<%= form_with model: @apartment do |form| %>
+    <div>
+        <%= form.label 'Apartment Name' %><br>
+        <%= form.text_field :apartment_name %>
+    </div>
+    <div>
+        <%= form.label 'Location' %><br>
+        <%= form.text_field :location %>
+    </div>
+    <div>
+        <%= form.label 'Description' %><br>
+        <%= form.text_field :description %>
+    </div>
+    <div>
+        <%= form.label 'Price' %><br>
+        <%= form.text_field :price %>
+    </div>
+    <div>
+        <%= form.label 'Review' %><br>
+        <%= form.text_field :review %>
+    </div>
+    <div>
+        <%= form.label 'Room Size' %><br>
+        <%= form.text_field :room_size %>
+    </div>
+    <div>
+        <%= form.label 'AC' %><br>
+        <%= form.check_box :ac, { checked: false }, true, false %>
+    </div>
+    <div>
+        <%= form.label 'TV' %><br>
+        <%= form.check_box :tv, { checked: false }, true, false %>
+    </div>
+    <div>
+        <%= form.label 'Wifi' %><br>
+        <%= form.check_box :wifi, { checked: true }, true, false %>
+    </div>
+    <div>
+        <%= form.label 'CCTV' %><br>
+        <%= form.check_box :cctv, { checked: true }, true, false %>
+    </div>
+    <div>
+        <%= form.label 'House Keeping' %><br>
+        <%= form.check_box :house_keeping, { checked: true }, true, false %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
