@@ -2,26 +2,44 @@
     <div>
         <%= form.label 'Apartment Name' %><br>
         <%= form.text_field :apartment_name %>
+        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'Location' %><br>
         <%= form.text_field :location %>
+        <% @apartment.errors.full_messages_for(:location).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'Description' %><br>
         <%= form.text_field :description %>
+        <% @apartment.errors.full_messages_for(:description).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'Price' %><br>
         <%= form.text_field :price %>
+        <% @apartment.errors.full_messages_for(:price).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'Review' %><br>
         <%= form.text_field :review %>
+        <% @apartment.errors.full_messages_for(:review).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'Room Size' %><br>
         <%= form.text_field :room_size %>
+        <% @apartment.errors.full_messages_for(:room_size).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
         <%= form.label 'AC' %><br>
