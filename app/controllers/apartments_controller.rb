@@ -6,6 +6,10 @@ class ApartmentsController < ApplicationController
     @apartments = Apartment.page(params[:page]).per(2)
   end
 
+  def list
+    @apartments = Apartment.page(params[:page]).per(2)
+  end
+
   def show
     @apartment = Apartment.find(params[:id])
   end
