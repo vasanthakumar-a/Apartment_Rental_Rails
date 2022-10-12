@@ -3,10 +3,14 @@ class ApartmentsController < ApplicationController
   before_action :authenticate_user!, except: %i[home]
 
   def index
+
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
 
     @apartments = Apartment.filter_by_starts_with(params[:search]) if params[:search].present?
 
+    if @apartments_filter
+      redirect_to :list
+    end
   end
 
   def list

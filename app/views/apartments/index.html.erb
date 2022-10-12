@@ -1,5 +1,3 @@
-<h1>VASANTH</h1>
-
 <ul>
     <% @apartments.each do |apartment| %>
     <li>
@@ -14,11 +12,20 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search">
-      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+
+    <%= form_with model: @apartment do |form| %>
+    <div>
+        <%= form.label 'search' %><br>
+        <%= form.search_field :search %>
+    </div>
+    <%= form.submit 'Search', method: :get %>
+    <% end %>
+
     </form>
   </div>
 </nav>
+
+<%= button_to 'press', list_path, method: :get %>
 
 <br>
 <br>
