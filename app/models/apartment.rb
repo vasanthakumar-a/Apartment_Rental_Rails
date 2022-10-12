@@ -5,4 +5,7 @@ class Apartment < ApplicationRecord
   validates :price, presence: true
   validates :review, presence: true
   validates :room_size, presence: true
+
+  scope :filter_by_starts_with, -> (apartment_name) { where("apartment_name like ?", "#{apartment_name}%")}
+
 end

@@ -7,7 +7,28 @@
     </li>
     <% end %>
 </ul>
+<br>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<br>
+<br>
+<br>
 
 <%= link_to "New Apartment", new_apartment_path %>
 
-<%= paginate @apartments %>
+
+<%if !(params[:search].present?) %>
+  <%= paginate @apartments %>
+<% end %>
+
+

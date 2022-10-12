@@ -3,11 +3,14 @@ class ApartmentsController < ApplicationController
   before_action :authenticate_user!, except: %i[home]
 
   def index
-    @apartments = Apartment.page(params[:page]).per(2)
+    @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
+
+    @apartments = Apartment.filter_by_starts_with(params[:search]) if params[:search].present?
+
   end
 
   def list
-    @apartments = Apartment.page(params[:page]).per(2)
+    @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
   end
 
   def show
@@ -51,6 +54,6 @@ class ApartmentsController < ApplicationController
 
   private
   def apartment_params
-    params.require(:apartment).permit(:apartment_name, :location, :description, :price, :review, :room_size, :ac, :tv, :wifi, :cctv, :house_keeping)
+    params.require(:apartment).permit(:apartment_name, :location, :description, :price, :review, :room_size, :ac, :tv, :wifi, :cctv, :house_keeping, :search)
   end
 end
