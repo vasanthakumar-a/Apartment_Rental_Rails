@@ -1,8 +1,6 @@
 class ApartmentsController < ApplicationController
 
-  before_action :authenticate_user!, except: %i[home]
-
-  attr_accessor :apartments_filter
+  # before_action (:authenticate_user! or :authenticate_owner!)
 
   def index
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)

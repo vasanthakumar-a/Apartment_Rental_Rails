@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'devise/sessions' }
+  devise_for :owners, path: '/owners', controllers: { sessions: 'owners/sessions' }
+  devise_for :users, path: '/users', controllers: { sessions: 'users/sessions' }
 
   root 'apartments#index'
 
