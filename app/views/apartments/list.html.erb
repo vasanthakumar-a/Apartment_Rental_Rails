@@ -10,6 +10,4 @@
 
 <%= link_to "New Apartment", new_apartment_path %>
 
-<%if !(params[:search].present?) %>
-  <%= paginate @apartments %>
-<% end %>
+<%= paginate @apartments %>

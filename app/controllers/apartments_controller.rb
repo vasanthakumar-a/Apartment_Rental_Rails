@@ -9,7 +9,7 @@ class ApartmentsController < ApplicationController
   end
 
   def list
-    @apartments = Apartment.filter_by_starts_with(params[:search]) if params[:search].present?
+    @apartments = Apartment.filter_by_starts_with(params[:search]).page(params[:page]).per(2) if params[:search].present?
   end
 
   def show

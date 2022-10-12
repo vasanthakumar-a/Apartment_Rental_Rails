@@ -26,8 +26,6 @@
   </div>
 </nav>
 
-<%= button_to 'press', list_path, method: :get %>
-
 <br>
 <br>
 <br>
@@ -35,8 +33,4 @@
 <%= link_to "New Apartment", new_apartment_path %>
 
 
-<%if !(params[:search].present?) %>
-  <%= paginate @apartments %>
-<% end %>
-
-
+<%= paginate @apartments %>
