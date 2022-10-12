@@ -11,14 +11,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline my-2 my-lg-0">
 
-    <%= form_with model: @apartment do |form| %>
+    <form action="/apartments/list" class="form-inline my-2 my-lg-0">
+
+    <%= form_with do |form| %>
     <div>
         <%= form.label 'search' %><br>
-        <%= form.search_field :search %>
+        <%= form.text_field :search %>
+        <%= form.submit 'Search', method: :get %>
     </div>
-    <%= form.submit 'Search', method: :get %>
     <% end %>
 
     </form>
