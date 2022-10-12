@@ -3,7 +3,7 @@ class ApartmentsController < ApplicationController
   before_action :authenticate_user!, except: %i[home]
 
   def index
-    @apartments = Apartment.all
+    @apartments = Apartment.page(params[:page]).per(2)
   end
 
   def show

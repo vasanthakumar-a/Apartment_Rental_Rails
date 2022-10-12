@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'apartments#index'
 
-  resources :apartments
+  resources :apartments do
+    get 'page/:page', action: :index, on: :collection
+  end
 end
