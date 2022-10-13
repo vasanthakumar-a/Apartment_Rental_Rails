@@ -1,3 +1,61 @@
 // Place all the styles related to the Apartments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 4rem 2rem;
+  }
+}
+
+.jumbotron-fluid {
+  padding-right: 0;
+  padding-left: 0;
+  border-radius: 0;
+}
+
+.jumbotron {
+  background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url(../img/header.jpg), no-repeat center center;
+  background-size: cover;
+}
+
+.jumbotron.page-header {
+  background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url(../img/page-header.jpg), no-repeat center center;
+  background-size: cover;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group > .form-control,
+.input-group > .form-control-plaintext,
+.input-group > .custom-select,
+.input-group > .custom-file {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.input-group-append .btn + .btn,
+.input-group-append .btn + .input-group-text,
+.input-group-append .input-group-text + .input-group-text,
+.input-group-append .input-group-text + .btn {
+  margin-left: -1px;
+}
+

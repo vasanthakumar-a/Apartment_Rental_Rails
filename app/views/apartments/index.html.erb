@@ -1,38 +1,26 @@
 <%= render 'navbar' %>
 
-<ul>
-    <% @apartments.each do |apartment| %>
-    <li>
-        <%= link_to apartment.apartment_name, apartment %>
-    </li>
-    <% end %>
-</ul>
-<br>
+<div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom: 90px;">
+        <div class="container text-center my-5 py-5">
+            <h1 class="text-white mt-4 mb-4">Stay Comfort at Anywhere</h1>
+            <h1 class="text-white display-1 mb-5">WizElite</h1>
+            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
 
+              <div class="input-group d-inline">
+                <form action="/apartments/list">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                      <%= form_with do |form| %>
+                      <div>
+                          <%= form.text_field :search, :class=>"form-control border-light", :style=>"padding: 30px 25px;", :placeholder=>"Keyword" %>
+                          <div class="input-group-append">
+                            <%= form.submit 'Search', method: :get, :class=>"btn btn-secondary px-4 px-lg-5" %>
+                          </div>
+                      </div>
+                      <% end %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <form action="/apartments/list" class="form-inline my-2 my-lg-0">
-
-    <%= form_with do |form| %>
-    <div>
-        <%= form.label 'search' %><br>
-        <%= form.text_field :search %>
-        <%= form.submit 'Search', method: :get %>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
-    <% end %>
-
-    </form>
-  </div>
-</nav>
-
-<br>
-<br>
-<br>
-
-<%= link_to "New Apartment", new_apartment_path %>
-
-
-<%= paginate @apartments %>
