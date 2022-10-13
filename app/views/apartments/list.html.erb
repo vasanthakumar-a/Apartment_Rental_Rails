@@ -1,13 +1,72 @@
-<h1>VASANTH</h1>
+<%= render 'navbar' %>
 
-<ul>
-    <% @apartments.each do |apartment| %>
-    <li>
-        <%= link_to apartment.apartment_name, apartment %>
-    </li>
-    <% end %>
-</ul>
-
-<%= link_to "New Apartment", new_apartment_path %>
-
+<div class="container">
+<br>
 <%= paginate @apartments %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="people-nearby">
+
+            <% @apartments.each do |apartment| %>
+
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="#" class="profile-link"><%= link_to apartment.apartment_name.capitalize, apartment %></a></h5>
+                    <p><%= apartment.location %></p>
+                    <p><span class="badge badge-warning"> <%= apartment.review %> <i class="fa fa-star-o"></i></span></p>
+                    <p class="text-muted"><%= apartment.room_size.to_i %> Sq Feet</p>
+
+                    <div class="d-inline aminities">
+                        <div class="d-inline mr-1 pr-1">
+                        <% if apartment.ac == true %>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">Ac</div>
+                        <% else %>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">Non Ac</div>
+                        <% end %>
+                        </div>
+                        <div class="d-inline mr-1 pr-1">
+                        <% if apartment.tv == true %>
+                            <i class="fa fa-tv" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">Tv</div>
+                        <% end %>
+                        </div>
+                        <div class="d-inline mr-1 pr-1">
+                        <% if apartment.wifi == true %>
+                            <i class="fa fa-wifi" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">Wifi</div>
+                        <% end %>
+                        </div>
+                        <div class="d-inline mr-1 pr-1">
+                        <% if apartment.cctv == true %>
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">Cctv</div>
+                        <% end %>
+                        </div>
+                        <div class="d-inline mr-1 pr-1">
+                        <% if apartment.house_keeping == true %>
+                            <i class="fa fa-bed" aria-hidden="true"></i>
+                            <div class="d-inline mr-1">House Keeping</div>
+                        <% end %>
+                        </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <%= link_to 'View Details', apartment, :class=>"btn btn-primary pull-right" %>
+                  </div>
+                </div>
+              </div>
+
+              <% end %>
+
+            </div>
+    	</div>
+	</div>
+    <%= paginate @apartments %>
+</div>
