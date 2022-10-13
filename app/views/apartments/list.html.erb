@@ -2,11 +2,14 @@
 
 <div class="container">
 <br>
-<%= paginate @apartments %>
+<% if @apartments %>
+  <%= paginate @apartments %>
+<% end %>
     <div class="row">
         <div class="col-md-12">
             <div class="people-nearby">
 
+            <% if @apartments %>
             <% @apartments.each do |apartment| %>
 
               <div class="nearby-user">
@@ -64,9 +67,12 @@
               </div>
 
               <% end %>
+              <% end %>
 
             </div>
     	</div>
 	</div>
+  <% if @apartments %>
     <%= paginate @apartments %>
+  <% end %>
 </div>
