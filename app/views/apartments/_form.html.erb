@@ -1,146 +1,220 @@
-<%= form_with model: @apartment do |form| %>
-    <div>
-        <%= form.label 'Apartment Name' %><br>
-        <%= form.text_field :apartment_name %>
-        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Location' %><br>
-        <%= form.text_field :location %>
-        <% @apartment.errors.full_messages_for(:location).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Description' %><br>
-        <%= form.text_field :description %>
-        <% @apartment.errors.full_messages_for(:description).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Deposit' %><br>
-        <%= form.text_field :deposit %>
-        <% @apartment.errors.full_messages_for(:deposit).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Rent' %><br>
-        <%= form.text_field :rent %>
-        <% @apartment.errors.full_messages_for(:rent).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Review' %><br>
-        <%= form.text_field :review %>
-        <% @apartment.errors.full_messages_for(:review).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Room Size' %><br>
-        <%= form.text_field :room_size %>
-        <% @apartment.errors.full_messages_for(:room_size).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'No of Bedrooms' %><br>
-        <%= form.text_field :bedrooms %>
-        <% @apartment.errors.full_messages_for(:bedrooms).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'No of Bathrooms' %><br>
-        <%= form.text_field :bathrooms %>
-        <% @apartment.errors.full_messages_for(:bathrooms).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Prefered Tenant' %><br>
-        <%= form.text_field :tenant %>
-        <% @apartment.errors.full_messages_for(:tenant).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Age of Building' %><br>
-        <%= form.text_field :building_age %>
-        <% @apartment.errors.full_messages_for(:building_age).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'No of Balconies' %><br>
-        <%= form.text_field :balcony %>
-        <% @apartment.errors.full_messages_for(:balcony).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Furnishiong Status' %><br>
-        <%= form.text_field :furnishing_status %>
-        <% @apartment.errors.full_messages_for(:furnishing_status).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Property Type' %><br>
-        <%= form.text_field :property_type %>
-        <% @apartment.errors.full_messages_for(:property_type).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Posted Date' %><br>
-        <%= form.text_field :posted_date %>
-        <% @apartment.errors.full_messages_for(:posted_date).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label 'Lift' %><br>
-        <%= form.check_box :lift %>
-    </div>
-    <div>
-        <%= form.label 'Wifi' %><br>
-        <%= form.check_box :wifi %>
-    </div>
-    <div>
-        <%= form.label 'AC' %><br>
-        <%= form.check_box :ac %>
-    </div>
-    <div>
-        <%= form.label 'Fire Safety' %><br>
-        <%= form.check_box :fire_safety %>
-    </div>
-    <div>
-        <%= form.label 'Security' %><br>
-        <%= form.check_box :security %>
-    </div>
-    <div>
-        <%= form.label 'House Keeping' %><br>
-        <%= form.check_box :house_keeping %>
-    </div>
-    <div>
-        <%= form.label 'Water Supply' %><br>
-        <%= form.check_box :water_supply %>
-    </div>
-    <div>
-        <%= form.label 'Parking' %><br>
-        <%= form.check_box :parking %>
-    </div>
-    <div>
-        <%= form.label 'Sewage Treatment' %><br>
-        <%= form.check_box :sewage %>
-    </div>
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form m-5 p-5">
+                            <%= form_with model: @apartment do |form| %>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+                                        <%= form.label 'Apartment Name', :class=>"form-label" %>
+                                        <%= form.text_field :apartment_name, :class=>"form-control", :placeholder=>"Apartment Name" %>
+                                        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+                                    <%= form.label 'Location', :class=>"form-label" %>
+                                        <%= form.text_field :location, :class=>"form-control", :placeholder=>"Location" %>
+                                        <% @apartment.errors.full_messages_for(:location).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+                                        <%= form.label 'Description', :class=>"form-label" %>
+                                        <%= form.text_area :description, :class=>"form-control text-area", :placeholder=>"Description" %>
+                                        <% @apartment.errors.full_messages_for(:description).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+                                        <%= form.label 'Deposit', :class=>"form-label" %>
+                                        <%= form.text_field :deposit, :class=>"form-control", :placeholder=>"Deposit" %>
+                                        <% @apartment.errors.full_messages_for(:deposit).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+                                        <%= form.label 'Rent', :class=>"form-label" %>
+                                        <%= form.text_field :rent, :class=>"form-control", :placeholder=>"Rent" %>
+                                        <% @apartment.errors.full_messages_for(:rent).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+                                <div class="col-md-4">
+									<div class="form-group">
+                                    <%= form.label 'Room Size (Sq Ft)', :class=>"form-label" %>
+                                        <%= form.text_field :room_size, :class=>"form-control", :placeholder=>"Room Size" %>
+                                        <% @apartment.errors.full_messages_for(:room_size).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+                                    <div class="d-none">
+                                    <%= form.label 'Review', :class=>"form-label" %>
+                                        <%= form.text_field :review, :value=>5, :placeholder=>"Review" %>
+                                        <% @apartment.errors.full_messages_for(:review).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+                                        <%= form.label 'No of Bedrooms', :class=>"form-label" %>
+                                        <%= form.text_field :bedrooms, :class=>"form-control", :placeholder=>"No of Bedrooms" %>
+                                        <% @apartment.errors.full_messages_for(:bedrooms).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+                                    <%= form.label 'No of Bathrooms', :class=>"form-label" %>
+                                        <%= form.text_field :bathrooms, :class=>"form-control", :placeholder=>"No of Bathrooms" %>
+                                        <% @apartment.errors.full_messages_for(:bathrooms).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+                                        <%= form.label 'Age of Building', :class=>"form-label" %>
+                                        <%= form.text_field :building_age, :class=>"form-control", :placeholder=>"Age of Building" %>
+                                        <% @apartment.errors.full_messages_for(:building_age).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+                                    <%= form.label 'No of Balconies', :class=>"form-label" %>
+                                        <%= form.text_field :balcony, :class=>"form-control", :placeholder=>"No of Balconies" %>
+                                        <% @apartment.errors.full_messages_for(:balcony).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Prefered Tenant</span>
+                                        <%= form.select :tenant, ['Bacholers', 'Family','Both'],{}, {:class=>"form-control"}%>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+                                <div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Furnishing Status</span>
+                                        <%= form.select :furnishing_status, ['No', 'Semifurnished','Fullyfurnished'],{}, {:class=>"form-control"}%>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<span class="form-label">Property Type</span>
+                                        <%= form.select :property_type, ['Apartment', 'Independant House'],{}, {:class=>"form-control"}%>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+                                <div class="d-none">
+                                    <%= form.text_field :posted_date, :value=>Date.today %>
+                                </div>
+							</div>
+
+							<div class="form-group card">
+                                <div class="row p-4">
+								    <div class="col-md-12">
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fa-solid fa-elevator ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Lift' %>
+                                                <%= form.check_box :lift %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fa-solid fa-wifi ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Wifi' %>
+                                                <%= form.check_box :wifi %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fas fa-digital-tachograph ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Ac' %>
+                                                <%= form.check_box :ac %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fa fa-fire-extinguisher ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Fire Safety' %>
+                                                <%= form.check_box :lift %>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+                                <div class="row p-4">
+								    <div class="col-md-12">
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fas fa-user-shield ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Security' %>
+                                                <%= form.check_box :security %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fas fa-broom ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'House Keeping' %>
+                                                <%= form.check_box :house_keeping %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fas fa-parking ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Parking' %>
+                                                <%= form.check_box :parking %>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fa fa-trash-o  ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Sewage' %>
+                                                <%= form.check_box :sewage %>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-btn">
+                                        <%= form.submit "Create Apartment", :class=>"submit-btn" %>
+									</div>
+								</div>
+							</div>
+                            <% end %>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+</div>
