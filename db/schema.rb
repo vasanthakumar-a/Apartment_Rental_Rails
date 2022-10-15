@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_12_115709) do
+ActiveRecord::Schema.define(version: 2022_10_13_195353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,16 +19,29 @@ ActiveRecord::Schema.define(version: 2022_10_12_115709) do
     t.string "apartment_name"
     t.text "location"
     t.text "description"
-    t.integer "price"
-    t.float "review"
+    t.integer "deposit"
+    t.integer "rent"
     t.float "room_size"
-    t.boolean "ac"
-    t.boolean "tv"
+    t.float "review"
+    t.integer "bedrooms"
+    t.text "tenant"
+    t.integer "building_age"
+    t.integer "balcony"
+    t.text "furnishing_status"
+    t.integer "bathrooms"
+    t.text "property_type"
+    t.boolean "lift"
     t.boolean "wifi"
-    t.boolean "cctv"
+    t.boolean "ac"
+    t.boolean "fire_safety"
+    t.boolean "security"
     t.boolean "house_keeping"
+    t.boolean "water_supply"
+    t.boolean "parking"
+    t.boolean "sewage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "posted_date"
   end
 
   create_table "owners", force: :cascade do |t|

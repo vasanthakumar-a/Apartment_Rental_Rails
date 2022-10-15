@@ -21,9 +21,16 @@
         <% end %>
     </div>
     <div>
-        <%= form.label 'Price' %><br>
-        <%= form.text_field :price %>
-        <% @apartment.errors.full_messages_for(:price).each do |message| %>
+        <%= form.label 'Deposit' %><br>
+        <%= form.text_field :deposit %>
+        <% @apartment.errors.full_messages_for(:deposit).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Rent' %><br>
+        <%= form.text_field :rent %>
+        <% @apartment.errors.full_messages_for(:rent).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
@@ -42,24 +49,96 @@
         <% end %>
     </div>
     <div>
-        <%= form.label 'AC' %><br>
-        <%= form.check_box :ac %>
+        <%= form.label 'No of Bedrooms' %><br>
+        <%= form.text_field :bedrooms %>
+        <% @apartment.errors.full_messages_for(:bedrooms).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
     </div>
     <div>
-        <%= form.label 'TV' %><br>
-        <%= form.check_box :tv %>
+        <%= form.label 'No of Bathrooms' %><br>
+        <%= form.text_field :bathrooms %>
+        <% @apartment.errors.full_messages_for(:bathrooms).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Prefered Tenant' %><br>
+        <%= form.text_field :tenant %>
+        <% @apartment.errors.full_messages_for(:tenant).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Age of Building' %><br>
+        <%= form.text_field :building_age %>
+        <% @apartment.errors.full_messages_for(:building_age).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'No of Balconies' %><br>
+        <%= form.text_field :balcony %>
+        <% @apartment.errors.full_messages_for(:balcony).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Furnishiong Status' %><br>
+        <%= form.text_field :furnishing_status %>
+        <% @apartment.errors.full_messages_for(:furnishing_status).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Property Type' %><br>
+        <%= form.text_field :property_type %>
+        <% @apartment.errors.full_messages_for(:property_type).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Posted Date' %><br>
+        <%= form.text_field :posted_date %>
+        <% @apartment.errors.full_messages_for(:posted_date).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div>
+        <%= form.label 'Lift' %><br>
+        <%= form.check_box :lift %>
     </div>
     <div>
         <%= form.label 'Wifi' %><br>
         <%= form.check_box :wifi %>
     </div>
     <div>
-        <%= form.label 'CCTV' %><br>
-        <%= form.check_box :cctv %>
+        <%= form.label 'AC' %><br>
+        <%= form.check_box :ac %>
+    </div>
+    <div>
+        <%= form.label 'Fire Safety' %><br>
+        <%= form.check_box :fire_safety %>
+    </div>
+    <div>
+        <%= form.label 'Security' %><br>
+        <%= form.check_box :security %>
     </div>
     <div>
         <%= form.label 'House Keeping' %><br>
         <%= form.check_box :house_keeping %>
+    </div>
+    <div>
+        <%= form.label 'Water Supply' %><br>
+        <%= form.check_box :water_supply %>
+    </div>
+    <div>
+        <%= form.label 'Parking' %><br>
+        <%= form.check_box :parking %>
+    </div>
+    <div>
+        <%= form.label 'Sewage Treatment' %><br>
+        <%= form.check_box :sewage %>
     </div>
     <div>
         <%= form.submit %>

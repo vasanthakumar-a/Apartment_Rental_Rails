@@ -27,59 +27,112 @@
 
 
 <div class="container">
-    <div class="row mt-5 justify-content-center">
-        <div class="col-lg-8">
-            <div class="ps-lg-1-6 ps-xl-5">
-                <div class="mb-5 wow fadeIn">
-                    <div class="text-start mb-1-6 wow fadeIn">
-                        <h1 class="h1 mb-0"><%= @apartment.apartment_name %></h1>
-                    </div>
-                    <p class="text-muted">Near <%= @apartment.location %></p>
+    <div class="row mt-3 justify-content-center border">
+    <div class="col-lg-1 border-right">
+        <h5 class="pt-3">Logo</h5>
+    </div>
+    <div class="col-lg-5 border-right">
+        <div class="d-block">
+            <h5 class="pt-3"><%= @apartment.apartment_name %></h5>
+        </div>
+        <div class="d-block">
+            <p class="text-muted"><%= @apartment.location %></p>
+        </div>
+    </div>
+    <div class="col-lg-2 border-right">
+        <div class="d-block">
+            <h6 class="pt-3"><%= @apartment.room_size.to_i %></h6>
+        </div>
+        <div class="d-block">
+            <p class="text-muted">Sq.ft</p>
+        </div>
+    </div>
+    <div class="col-lg-2 border-right">
+    <div class="d-block">
+            <h6 class="pt-3">₹<%= @apartment.deposit %></h6>
+        </div>
+        <div class="d-block">
+            <p class="text-muted">Deposit</p>
+        </div>
+    </div>
+    <div class="col-lg-2">
+    <div class="d-block">
+            <h6 class="pt-3">₹<%= @apartment.rent %>/month</h6>
+        </div>
+        <div class="d-block">
+            <p class="text-muted">Rent</p>
+        </div>
+    </div>
+    </div>
 
-                </div>
-                <div class="mb-5 wow fadeIn">
-                    <div class="text-start mb-1-6 wow fadeIn">
-                        <h4 class="mb-0">Description</h4>
+
+
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-8 border">
+            <div class="mt-3 text-start mb-1-6 wow fadeIn">
+                <h4 class="mb-0">Overview</h4>
+            </div>
+            <div class="row">
+                <div class="col-6 justify-content">
+                    <div class="ps-lg-1-6 ps-xl-5">
+                        <div class="mb-5 wow fadeIn">
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Furnishing Status</div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Water Supply</div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Bathrooms </div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Bedrooms </div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Prefered Tenant </div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Property Type </div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Posted Date </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="md-0 text-muted"><%= @apartment.description %></p>
                 </div>
-                <div class="mb-5 wow fadeIn">
-                    <div class="text-start mb-1-6 wow fadeIn">
-                        <h4 class="mb-0">Aminities</h4>
+                <div class="col-6">
+                    <div class="ps-lg-1-6 ps-xl-5">
+                        <div class="mb-5 wow fadeIn">
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.furnishing_status.capitalize %></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><% if @apartment.water_supply %>Yes<%else%>No<%end%></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.bathrooms %></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.bedrooms %></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.tenant.capitalize %></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.property_type.capitalize %></div>
+                            </div>
+                            <div class="d-block m-4 pr-1">
+                                <div class="d-inline ml-2"><%= @apartment.posted_date %></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-inline mr-1 pr-1">
-                        <% if @apartment.ac == true %>
-                            <i class="fa fa-home" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">Ac</div>
-                        <% else %>
-                            <i class="fa fa-home" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">Non Ac</div>
-                        <% end %>
-                        </div>
-                        <div class="d-inline mr-1 pr-1">
-                        <% if @apartment.tv == true %>
-                            <i class="fa fa-tv" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">Tv</div>
-                        <% end %>
-                        </div>
-                        <div class="d-inline mr-1 pr-1">
-                        <% if @apartment.wifi == true %>
-                            <i class="fa fa-wifi" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">Wifi</div>
-                        <% end %>
-                        </div>
-                        <div class="d-inline mr-1 pr-1">
-                        <% if @apartment.cctv == true %>
-                            <i class="fa fa-video-camera" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">Cctv</div>
-                        <% end %>
-                        </div>
-                        <div class="d-inline mr-1 pr-1">
-                        <% if @apartment.house_keeping == true %>
-                            <i class="fa fa-bed" aria-hidden="true"></i>
-                            <div class="d-inline mr-1">House Keeping</div>
-                        <% end %>
-                        </div>
                 </div>
             </div>
         </div>
@@ -90,21 +143,88 @@
 
             <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
                 <div class="card-body">
-                    <h5 class="card-title d-inline pr-1">₹<%= @apartment.price %> <s>₹<%= @apartment.price*2 %></s></h5><span class = "badge badge-success"> 50% offer</span>
-                    <p class="card-text text-muted">inclusive of all taxes</p>
-
-                    <div class="card pl-4">
-                        <%= Date.today %> - <%= Date.today + 1 %>
-                    </div>
-
-                    <i class="fa fa-certificate text-warning"></i>
-
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <button type="button" class="btn btn-primary">Button</button>
-                    </div>
-
+                    <button class="btn btn-danger">Get Owner Details</button>
+                </div>
             </div>
         </div>
-
     </div>
+
+    <div class="row mt-3 justify-content-left">
+        <div class="col-lg-8 border">
+            <div class="mt-3 text-start mb-1-6 wow fadeIn">
+                <h4 class="mb-0">Description</h4>
+            </div>
+            <div class="row">
+                <div class="col-12 justify-content">
+                    <div class="ps-lg-1-6 ps-xl-5">
+                        <div class="mb-5 wow fadeIn">
+                            <div class="d-block m-4 pr-1">
+                                <p class="card-text"><%= @apartment.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-5 justify-content-left">
+        <div class="col-lg-8 border">
+            <div class="mt-3 text-start mb-1-6 wow fadeIn">
+                <h4 class="mb-0">Aminities</h4>
+            </div>
+            <div class="row m-3">
+                <div class="col-12 justify-content">
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.lift %>
+                                <i class="fa-solid fa-elevator ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Lift</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.wifi %>
+                                <i class="fa fa-wifi ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Wifi</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.ac %>
+                                <i class="fas fa-digital-tachograph ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">AC</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.fire_safety %>
+                                <i class="fas fa-user-shield ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Fire Safety</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.security %>
+                                <i class="fas fa-user-shield ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Security</div>
+                            <% end %>
+                            </div>
+                        <div class="d-inline m-4 pr-1">
+                            <% if @apartment.house_keeping %>
+                                <i class="fas fa-broom ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">House Keeping</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.parking %>
+                                <i class="fas fa-parking ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Parking</div>
+                            <% end %>
+                            </div>
+                            <div class="d-inline m-4 pr-1">
+                            <% if @apartment.sewage %>
+                                <i class="fa fa-trash-o ml-2" aria-hidden="true"></i>
+                                <div class="d-inline ml-2">Sewage</div>
+                            <% end %>
+            </div>
+        </div>
+    </div>
+
+</div>
 </div>
