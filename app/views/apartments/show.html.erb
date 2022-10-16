@@ -149,7 +149,14 @@
 
             <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
                 <div class="card-body">
-                    <button class="btn btn-danger">Get Owner Details</button>
+                <% if user_signed_in? %>
+                    <%= link_to 'Get Owner Details', apartment_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% elsif owner_signed_in? %>
+                    <%= link_to "Edit Apartment Details", edit_apartment_path, :class => 'btn btn-primary mt-2 ml-sm-0' %>
+                    <%= link_to 'Delete Apartment', apartment_path, method: :delete, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% else %>
+                    <%= link_to 'Get Owner Details', new_user_session_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% end %>
                 </div>
             </div>
         </div>
