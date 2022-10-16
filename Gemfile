@@ -23,6 +23,8 @@ gem 'pg'
 gem 'devise', '~> 4.8.1'
 # Pagination using Kaminari
 gem 'kaminari', '~> 1.2.2'
+# Faker
+gem 'faker','~> 2.23.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
