@@ -26,7 +26,7 @@
                   </div>
                   <div class="col-md-7 col-sm-7">
                     <h5><a href="#" class="profile-link">
-                      <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location, apartment %>
+                      <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location.capitalize, apartment %>
                     </a></h5>
                     <p><%= apartment.location %></p>
                     <p><span class="badge badge-warning"> <%= apartment.review %> <i class="fa fa-star-o"></i></span></p>

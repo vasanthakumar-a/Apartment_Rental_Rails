@@ -18,5 +18,5 @@ class Apartment < ApplicationRecord
   validates :property_type, presence: :true
   validates :posted_date, presence: :true
 
-  scope :filter_by_starts_with, -> (location) { where("location like ?", "#{location}%")}
+  scope :filter_by, -> (location) { where("location like ?", "%#{location}%")}
 end

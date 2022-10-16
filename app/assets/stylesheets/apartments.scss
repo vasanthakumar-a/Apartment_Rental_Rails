@@ -4,7 +4,7 @@
 
 
 
-.jumbotron {
+.wizelite {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
@@ -12,23 +12,23 @@
 }
 
 @media (min-width: 576px) {
-  .jumbotron {
+  .wizelite {
     padding: 4rem 2rem;
   }
 }
 
-.jumbotron-fluid {
+.wizelite-fluid {
   padding-right: 0;
   padding-left: 0;
   border-radius: 0;
 }
 
-.jumbotron {
+.wizelite {
   background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url(../img/header.jpg), no-repeat center center;
   background-size: cover;
 }
 
-.jumbotron.page-header {
+.wizelite.page-header {
   background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url(../img/page-header.jpg), no-repeat center center;
   background-size: cover;
 }
@@ -176,12 +176,12 @@ p {
 
 // Search Style
 
-.jumbotron {
+.wizelite {
   background: linear-gradient(rgba(253, 20, 20, 0.9), rgba(40, 120, 235, 0.9)), url('https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1'), no-repeat center center;
   background-size: cover;
 }
 
-.jumbotron.page-header {
+.wizelite.page-header {
   background: linear-gradient(rgba(253, 20, 20, 0.9), rgba(40, 120, 235, 0.9)), url('https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1'), no-repeat center center;
   background-size: cover;
 }
