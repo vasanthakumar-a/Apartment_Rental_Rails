@@ -5,12 +5,19 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-  <div class="carousel-item active">
+    <% if @apartment.image.attached? %>
+
+    <div class="carousel-item active">
         <%= image_tag @apartment.image[0], :class=>"d-block w-100" %>
         </div>
     <% @apartment.image.each do |img| %>
         <div class="carousel-item">
         <%= image_tag img, :class=>"d-block w-100" %>
+        </div>
+    <% end %>
+    <% else %>
+        <div class="carousel-item active">
+            <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="d-block w-100">
         </div>
     <% end %>
 
