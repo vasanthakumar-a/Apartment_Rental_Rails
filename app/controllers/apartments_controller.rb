@@ -76,7 +76,8 @@ class ApartmentsController < ApplicationController
       :parking,
       :sewage,
       :posted_date,
-      :search
+      :search,
+      image: []
     )
   end
 end

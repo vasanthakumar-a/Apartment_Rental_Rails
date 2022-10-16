@@ -5,6 +5,17 @@
 					<div class="booking-form m-5 p-5">
                             <%= form_with model: @apartment do |form| %>
 							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+                                        <%= form.label 'Image', :class=>"form-label" %>
+                                        <%= form.file_field :image, multiple: true, :class=>"form-control", :placeholder=>"Apartment Name" %>
+                                        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
+                                            <div><%= puts message %></div>
+                                        <% end %>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
                                         <%= form.label 'Apartment Name', :class=>"form-label" %>
