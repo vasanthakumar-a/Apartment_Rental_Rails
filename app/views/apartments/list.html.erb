@@ -15,12 +15,19 @@
 
               <div class="nearby-user">
                 <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user"
-                    class="profile-photo-lg"></a>
+                  <div class="col-md-3 col-sm-2">
+                    <% if apartment.image.attached? %>
+                      <a href="#"><%= image_tag apartment.image[1], :class=>"list-image" %></a>
+                    <% else %>
+                      <a href="#">
+                        <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="list-image">
+                      </a>
+                    <% end %>
                   </div>
                   <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link"><%= link_to apartment.apartment_name.capitalize, apartment %></a></h5>
+                    <h5><a href="#" class="profile-link">
+                      <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location, apartment %>
+                    </a></h5>
                     <p><%= apartment.location %></p>
                     <p><span class="badge badge-warning"> <%= apartment.review %> <i class="fa fa-star-o"></i></span></p>
 
@@ -90,7 +97,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-3 col-sm-3">
+                  <div class="col-md-2 col-sm-3">
                     <%= link_to 'Get Owner Details', apartment, :class=>"btn btn-danger pull-right" %>
                   </div>
                 </div>

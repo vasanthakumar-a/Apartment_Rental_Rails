@@ -39,7 +39,7 @@
     </div>
     <div class="col-lg-5 border-right">
         <div class="d-block">
-            <h5 class="pt-3"><%= @apartment.apartment_name %></h5>
+            <h5 class="pt-3"><%= @apartment.bedrooms.to_s+" BHK "+@apartment.property_type+" In "+@apartment.apartment_name.capitalize+" For Rent In "+@apartment.location %></h5>
         </div>
         <div class="d-block">
             <p class="text-muted"><%= @apartment.location %></p>
