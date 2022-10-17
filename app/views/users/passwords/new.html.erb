@@ -1,16 +1,26 @@
-<h2>Forgot your password?</h2>
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/backstage-serviced-apartments-switzerland-booking-com-1596644649.jpg');"></div>
+    <div class="contents order-2 order-md-1">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7 mt-4">
+            <h3>Login to <strong>WizElite</strong> Users</h3><br>
+            <form action="#" method="post">
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <%= render "users/shared/error_messages", resource: resource %>
+              <div class="form-group first">
+                <%= f.label :Email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=>"form-control", :placeholder=>"abcd@gmail.com" %>
+              </div>
+              <%= f.submit "Send me reset password instructions", :class=>"btn btn-block btn-login mb-5" %>
+              <div class="d-flex mb-5 align-items-center">
+                <%= render "users/shared/links" %>
+              </div>
+            <% end %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
