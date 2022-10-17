@@ -7,7 +7,8 @@ class ApartmentsController < ApplicationController
   end
 
   def list
-    @apartments = Apartment.filter_by(params[:search].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    @current_owner = current_owner.id
+    @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
     # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
   end
 
@@ -19,6 +20,7 @@ class ApartmentsController < ApplicationController
 
   def owner_details
     @apartment = Apartment.find(params[:id])
+    @owner = Owner.find(@apartment.owner_id)
   end
 
   def show
