@@ -16,6 +16,10 @@ class ApartmentsController < ApplicationController
     puts "#######\n",@current_owner
   end
 
+  def owner_details
+    @apartment = Apartment.find(params[:id])
+  end
+
   def show
     @apartment = Apartment.find(params[:id])
   end

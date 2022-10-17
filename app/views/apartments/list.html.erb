@@ -17,9 +17,9 @@
                 <div class="row">
                   <div class="col-md-3 col-sm-2">
                     <% if apartment.image.attached? %>
-                      <a href="#"><%= image_tag apartment.image[1], :class=>"list-image" %></a>
+                      <a href="<%= apartment.id %>"><%= image_tag apartment.image[1], :class=>"list-image" %></a>
                     <% else %>
-                      <a href="#">
+                      <a href="<%= apartment.id %>">
                         <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="list-image">
                       </a>
                     <% end %>
