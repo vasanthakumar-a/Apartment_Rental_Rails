@@ -27,7 +27,8 @@ apartments = []
     water_supply: [true,false].sample,
     parking: [true,false].sample,
     sewage: [true,false].sample,
-    posted_date: Date.today
+    posted_date: Date.today,
+    owner_id: [1,2,3].sample
   }
   apartments.push(new_apartment)
 end

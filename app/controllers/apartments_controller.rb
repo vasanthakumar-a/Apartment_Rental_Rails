@@ -8,6 +8,7 @@ class ApartmentsController < ApplicationController
 
   def list
     @apartments = Apartment.filter_by(params[:search].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
   end
 
   def my_apartment
@@ -88,6 +89,7 @@ class ApartmentsController < ApplicationController
       :sewage,
       :posted_date,
       :search,
+      :search_location,
       :owner => [:id],
       image: []
     )

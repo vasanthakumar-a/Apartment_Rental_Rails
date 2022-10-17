@@ -6,7 +6,6 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7 mt-4">
             <h3>Edit your <strong>WizElite</strong> Account</h3><br>
-            <form action="#" method="post">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
               <%= render "owners/shared/error_messages", resource: resource %>
               <div class="form-group first">
@@ -35,7 +34,6 @@
             <h4>Delete Your <strong>Account</strong> ?</h4><br>
              <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class=>"btn btn-block btn-login mb-5" %></p>
             <% end %>
-            </form>
           </div>
         </div>
       </div>

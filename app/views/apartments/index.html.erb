@@ -11,7 +11,39 @@
                       <%= form_with do |form| %>
                       <div class="row">
                           <div class="col-3 form-btn">
-                            <%= form.select :search, ['Chennai', 'Coimbatore', 'Madurai', 'Trichy', 'Salem'],{}, {:class=>"form-control"}%>
+                              <%= form.select :search,[ "Ariyalur",
+                                                        "Chennai",
+                                                        "Coimbatore",
+                                                        "Cuddalore",
+                                                        "Dharmapuri",
+                                                        "Dindigul",
+                                                        "Erode",
+                                                        "Kanchipuram",
+                                                        "Kanyakumari",
+                                                        "Karur",
+                                                        "Krishnagiri",
+                                                        "Madurai",
+                                                        "Nagapattinam",
+                                                        "Namakkal",
+                                                        "Nilgiris",
+                                                        "Perambalur",
+                                                        "Pudukkottai",
+                                                        "Ramanathapuram",
+                                                        "Salem",
+                                                        "Sivaganga",
+                                                        "Thanjavur",
+                                                        "Theni",
+                                                        "Thoothukudi",
+                                                        "Tiruchirappalli",
+                                                        "Tirunelveli",
+                                                        "Tiruppur",
+                                                        "Tiruvallur",
+                                                        "Tiruvannamalai",
+                                                        "Tiruvarur",
+                                                        "Vellore",
+                                                        "Viluppuram",
+                                                        "Virudhunagar"
+                                                        ] ,{}, {:class=>"form-control"}%>
                           </div>
                           <div class=" col-9 form-btn">
                             <%= form.text_field :search_location, :class=>"form-control", :style=>"padding: 30px 25px;", :placeholder=>"Location" %>
