@@ -7,7 +7,20 @@ class ApartmentsController < ApplicationController
   end
 
   def list
-    @apartments = Apartment.filter_by_starts_with(params[:search]).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    @current_owner = current_owner.id
+    @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
+  end
+
+  def my_apartment
+    @current_owner = current_owner.id
+    @apartments = Apartment.filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
+    puts "#######\n",@current_owner
+  end
+
+  def owner_details
+    @apartment = Apartment.find(params[:id])
+    @owner = Owner.find(@apartment.owner_id)
   end
 
   def show
@@ -20,6 +33,7 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
+    @apartment.owner_id = current_owner.id if owner_signed_in?
 
     if @apartment.save
       redirect_to @apartment
@@ -77,6 +91,8 @@ class ApartmentsController < ApplicationController
       :sewage,
       :posted_date,
       :search,
+      :search_location,
+      :owner => [:id],
       image: []
     )
   end

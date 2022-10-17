@@ -1,6 +1,7 @@
 class Apartment < ApplicationRecord
 
   has_many_attached :image
+  belongs_to :owner
 
   validates :apartment_name, presence: :true
   validates :location, presence: :true
@@ -18,5 +19,7 @@ class Apartment < ApplicationRecord
   validates :property_type, presence: :true
   validates :posted_date, presence: :true
 
-  scope :filter_by_starts_with, -> (location) { where("location like ?", "#{location}%")}
+  scope :filter_by, -> (location) { where("location like ?", "%#{location}%")}
+  scope :filter_by_search_location, -> (search_location) { where("location like ?", "%#{search_location}%")}
+  scope :filter_by_owner_id, -> (owner_id) { where owner_id: owner_id }
 end

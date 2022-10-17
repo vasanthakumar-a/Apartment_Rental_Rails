@@ -39,7 +39,7 @@
     </div>
     <div class="col-lg-5 border-right">
         <div class="d-block">
-            <h5 class="pt-3"><%= @apartment.apartment_name %></h5>
+            <h5 class="pt-3"><%= @apartment.bedrooms.to_s+" BHK "+@apartment.property_type+" In "+@apartment.apartment_name.capitalize+" For Rent In "+@apartment.location.capitalize %></h5>
         </div>
         <div class="d-block">
             <p class="text-muted"><%= @apartment.location %></p>
@@ -55,7 +55,7 @@
     </div>
     <div class="col-lg-2 border-right">
     <div class="d-block">
-            <h6 class="pt-3">₹<%= @apartment.deposit %></h6>
+            <h6 class="pt-3"><%= number_to_currency(@apartment.deposit, :unit=> '₹ ') %></h6>
         </div>
         <div class="d-block">
             <p class="text-muted">Deposit</p>
@@ -63,7 +63,7 @@
     </div>
     <div class="col-lg-2">
     <div class="d-block">
-            <h6 class="pt-3">₹<%= @apartment.rent %>/month</h6>
+            <h6 class="pt-3"><%= number_to_currency(@apartment.rent, :unit => '₹ ') %>/month</h6>
         </div>
         <div class="d-block">
             <p class="text-muted">Rent</p>
@@ -150,10 +150,12 @@
             <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
                 <div class="card-body">
                 <% if user_signed_in? %>
-                    <%= link_to 'Get Owner Details', apartment_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
-                <% elsif owner_signed_in? %>
+                    <%= link_to 'Get Owner Details', owner_details_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% elsif owner_signed_in? and current_owner.id = @apartment.owner_id %>
                     <%= link_to "Edit Apartment Details", edit_apartment_path, :class => 'btn btn-primary mt-2 ml-sm-0' %>
                     <%= link_to 'Delete Apartment', apartment_path, method: :delete, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% elsif owner_signed_in? %>
+                    <%= link_to 'Get Owner Details', apartment_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
                 <% else %>
                     <%= link_to 'Get Owner Details', new_user_session_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
                 <% end %>
