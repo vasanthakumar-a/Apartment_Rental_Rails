@@ -1,26 +1,32 @@
 class ApartmentsController < ApplicationController
 
-  # before_action (:authenticate_user! or :authenticate_owner!)
+  # before_action :authenticate_user!, only: [:owner_details]
 
   def index
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
   end
 
   def list
-    @current_owner = current_owner.id
-    @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    @apartments = Apartment.filter_by(params[:search].capitalize).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
     # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
   end
 
   def my_apartment
-    @current_owner = current_owner.id
-    @apartments = Apartment.filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
-    puts "#######\n",@current_owner
+    if owner_signed_in?
+      @current_owner = current_owner.id
+      @apartments = Apartment.filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
+    else
+      redirect_to owner_session_path
+    end
   end
 
   def owner_details
-    @apartment = Apartment.find(params[:id])
-    @owner = Owner.find(@apartment.owner_id)
+    if owner_signed_in? or user_signed_in?
+      @apartment = Apartment.find(params[:id])
+      @owner = Owner.find(@apartment.owner_id)
+    else
+      redirect_to user_session_path
+    end
   end
 
   def show
