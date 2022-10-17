@@ -20,4 +20,5 @@ class Apartment < ApplicationRecord
   validates :posted_date, presence: :true
 
   scope :filter_by, -> (location) { where("location like ?", "%#{location}%")}
+  scope :filter_by_owner_id, -> (owner_id) { where owner_id: owner_id }
 end

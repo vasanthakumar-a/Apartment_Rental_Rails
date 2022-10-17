@@ -13,6 +13,7 @@
           <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
           <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link btn my-2 my-sm-0' %> </li>
         <% elsif owner_signed_in? %>
+          <li><%= link_to "My Apartments", my_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
           <li><%= link_to "Create New Apartment", new_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
           <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
           <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link btn my-2 my-sm-0' %> </li>

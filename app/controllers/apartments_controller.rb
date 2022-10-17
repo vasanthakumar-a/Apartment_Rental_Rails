@@ -10,6 +10,12 @@ class ApartmentsController < ApplicationController
     @apartments = Apartment.filter_by(params[:search].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
   end
 
+  def my_apartment
+    @current_owner = current_owner.id
+    @apartments = Apartment.filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
+    puts "#######\n",@current_owner
+  end
+
   def show
     @apartment = Apartment.find(params[:id])
   end
@@ -78,6 +84,7 @@ class ApartmentsController < ApplicationController
       :sewage,
       :posted_date,
       :search,
+      :owner => [:id],
       image: []
     )
   end
