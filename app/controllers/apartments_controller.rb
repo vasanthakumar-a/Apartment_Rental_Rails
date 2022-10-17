@@ -20,6 +20,7 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
+    @apartment.owner_id = current_owner.id if owner_signed_in?
 
     if @apartment.save
       redirect_to @apartment

@@ -1,6 +1,7 @@
 class Apartment < ApplicationRecord
 
   has_many_attached :image
+  belongs_to :owner
 
   validates :apartment_name, presence: :true
   validates :location, presence: :true
