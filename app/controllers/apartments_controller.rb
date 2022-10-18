@@ -28,6 +28,18 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def reduce_credit
+    if user_signed_in?
+      @credits = User.find(current_user.id)
+      @credits.credits -= 1
+    elsif owner_signed_in?
+      @credits = Owner.find(current_owner.id)
+      @credits.credits -= 1
+    else
+      redirect_to user_session_path
+    end
+    @credits.save
+  end
   def show
     @apartment = Apartment.find(params[:id])
   end
@@ -40,6 +52,9 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.new(apartment_params)
     @apartment.owner_id = current_owner.id if owner_signed_in?
 
+    if current_owner.credits
+      reduce_credit()
+    end
     if @apartment.save
       redirect_to @apartment
     else

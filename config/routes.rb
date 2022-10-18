@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/apartments/payment', to: 'payments#new_payment', as: 'new_payment'
   get '/apartments/my_apartment', to: 'apartments#my_apartment', as: 'my_apartment'
   get '/apartments/:id/owner_details', to: 'apartments#owner_details', as: 'owner_details'
+  post '/apartments/:id/owner_details', to: 'payments#reduce_credit', as: 'reduce_credit'
 
   resources :apartments do
     get 'page/:page', action: :index, on: :collection

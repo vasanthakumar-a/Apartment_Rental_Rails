@@ -36,5 +36,23 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def reduce_credit
+    if user_signed_in?
+      @credits = User.find(current_user.id)
+      @credits.credits -= 1
+    elsif owner_signed_in?
+      @credits = Owner.find(current_owner.id)
+      @credits.credits -= 1
+    else
+      redirect_to user_session_path
+    end
+
+    if @credits.save
+      redirect_to owner_details_path
+    else
+      redirect_to apartments_path
+    end
+  end
+
 end
 
