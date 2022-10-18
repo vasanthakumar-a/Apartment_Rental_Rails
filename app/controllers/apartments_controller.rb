@@ -29,6 +29,9 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def payment
+  end
+
   def show
     @apartment = Apartment.find(params[:id])
   end
