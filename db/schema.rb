@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_183245) do
+ActiveRecord::Schema.define(version: 2022_10_18_105928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 2022_10_17_183245) do
 
   create_table "credits", force: :cascade do |t|
     t.bigint "coin"
-    t.bigint "user_id"
-    t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "owner_id"
+    t.bigint "user_id"
     t.index ["owner_id"], name: "index_credits_on_owner_id"
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_183245) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "credits", default: 0
     t.index ["confirmation_token"], name: "index_owners_on_confirmation_token", unique: true
     t.index ["email"], name: "index_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_183245) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "credits", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

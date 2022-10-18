@@ -1,6 +1,6 @@
 class ApartmentsController < ApplicationController
 
-  # before_action :authenticate_user!, only: [:owner_details]
+  # before_action :authenticated_user_or_owner?
 
   def index
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
@@ -13,8 +13,7 @@ class ApartmentsController < ApplicationController
 
   def my_apartment
     if owner_signed_in?
-      @current_owner = current_owner.id
-      @apartments = Apartment.filter_by_owner_id(@current_owner).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
+      @apartments = Apartment.filter_by_owner_id(current_owner.id).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
     else
       redirect_to owner_session_path
     end
@@ -30,6 +29,11 @@ class ApartmentsController < ApplicationController
   end
 
   def payment
+    puts "######## \n in \n ##########"
+
+    if !(user_signed_in? or owner_signed_in?)
+      redirect_to user_session_path
+    end
   end
 
   def show
@@ -102,6 +106,7 @@ class ApartmentsController < ApplicationController
       :search,
       :search_location,
       :owner => [:id],
+      :user => [:id],
       image: []
     )
   end
