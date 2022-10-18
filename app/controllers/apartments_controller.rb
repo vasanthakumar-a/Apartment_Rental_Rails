@@ -52,8 +52,10 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.new(apartment_params)
     @apartment.owner_id = current_owner.id if owner_signed_in?
 
-    if current_owner.credits
+    if current_owner.credits > 0
       reduce_credit()
+    else
+      redirect_to payment_path and return
     end
     if @apartment.save
       redirect_to @apartment
