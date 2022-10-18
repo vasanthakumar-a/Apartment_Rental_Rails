@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root 'apartments#index'
 
   get '/apartments/list', to: 'apartments#list', as: 'list'
-  get '/apartments/payment', to: 'payments#index', as: 'payment'
+  get '/payment', to: 'payments#index', as: 'payment'
+  get '/payment/history', to: 'payments#history', as: 'payment_history'
   post '/apartments/payment', to: 'payments#new_payment', as: 'new_payment'
   get '/apartments/my_apartment', to: 'apartments#my_apartment', as: 'my_apartment'
   get '/apartments/:id/owner_details', to: 'apartments#owner_details', as: 'owner_details'
