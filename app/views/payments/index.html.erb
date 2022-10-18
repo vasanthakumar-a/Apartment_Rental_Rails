@@ -1,7 +1,6 @@
 <div class="container d-flex justify-content-center mt-5 mb-5">
             <div class="row g-3">
 
-            <%= form_tag(new_payment_path, method: :post) %>
               <div class="col-md-6">
                 <span>Payment Method</span>
                 <div class="card">
@@ -163,8 +162,6 @@
                         <span>-18%</span>
 
                       </div>
-
-
                     </div>
 
                     <hr class="mt-0 line">
@@ -179,20 +176,16 @@
 
                       </div>
                       <span>₹0</span>
-
-
-
                     </div>
 
+                    <%= form_tag(new_payment_path, method: :post) %>
 
                     <div class="p-3">
-                    <%= submit_tag 'Submit' %>
-                    <%= link_to "Try it free for 30 days", new_payment_path, :class=>"btn btn-primary btn-block"%>
+                    <%= submit_tag 'Try it free for 30 days', :class=>"btn btn-primary btn-block" %>
                    <div class="text-center">
                      <a href= '#' >Have a promo code?</a>
                    </div>
                     </div>
-
                   </div>
               </div>
 

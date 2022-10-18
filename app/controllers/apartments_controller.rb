@@ -13,7 +13,7 @@ class ApartmentsController < ApplicationController
 
   def my_apartment
     if owner_signed_in?
-      @apartments = Apartment.filter_by_owner_id(current_owner.id).order(:apartment_name).page(params[:page]).per(2) if @current_owner.present?
+      @apartments = Apartment.filter_by_owner_id(current_owner.id).order(:apartment_name).page(params[:page]).per(2) if current_owner.id.present?
     else
       redirect_to owner_session_path
     end
@@ -24,14 +24,6 @@ class ApartmentsController < ApplicationController
       @apartment = Apartment.find(params[:id])
       @owner = Owner.find(@apartment.owner_id)
     else
-      redirect_to user_session_path
-    end
-  end
-
-  def payment
-    puts "######## \n in \n ##########"
-
-    if !(user_signed_in? or owner_signed_in?)
       redirect_to user_session_path
     end
   end
