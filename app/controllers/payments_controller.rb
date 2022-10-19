@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
 
   def new_payment
     @payment_history = PaymentHistory.new()
-    @payment_history.message = "Created Payment for adding credits"
+    @payment_history.message = "Created Payment for Adding Credits"
     @payment_history.mode = "Credit Card"
     @payment_history.credits_increment = 10
     if user_signed_in?
@@ -44,7 +44,7 @@ class PaymentsController < ApplicationController
 
   def reduce_credit
     @payment_history = PaymentHistory.new()
-    @payment_history.message = "Reduced 1 Credit for Viewing Owner Detail"
+    @payment_history.message = "Used 1 Credit for Viewing Owner Detail"
     @payment_history.mode = "Coin"
     @payment_history.credits_decrement = 1
     if user_signed_in?

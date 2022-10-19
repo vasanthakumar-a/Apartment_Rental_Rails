@@ -178,14 +178,14 @@
                       <span>₹0</span>
                     </div>
 
-                    <%= form_tag(new_payment_path, method: :post) %>
-
+                    <%= form_with(url: new_payment_path, method: :post) do %>
                     <div class="p-3">
                     <%= submit_tag 'Try it free for 30 days', :class=>"btn btn-primary btn-block" %>
                    <div class="text-center">
                      <a href= '#' >Have a promo code?</a>
                    </div>
                     </div>
+                    <% end %>
                   </div>
               </div>
 
