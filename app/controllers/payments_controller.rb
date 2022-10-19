@@ -74,9 +74,8 @@ class PaymentsController < ApplicationController
       @credits = Owner.find(current_owner.id)
       @payment_history = PaymentHistory.filter_history_by_owner_id(current_owner.id)
     else
-
+      redirect_to user_session_path
     end
   end
-
 end
 

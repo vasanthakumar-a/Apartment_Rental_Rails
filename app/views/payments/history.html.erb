@@ -8,7 +8,7 @@
     <div class="row mt-2 pt-2">
         <div class="col-md-6" id="income">
             <div class="d-flex justify-content-start align-items-center">
-                <p class="fa fa-long-arrow-down"></p>
+                <p class="fa fa-certificate"></p>
                 <p class="text mx-3">Credits Available</p>
                 <p class="text-white ml-4 money"><%= @credits.credits %></p>
             </div>
@@ -18,7 +18,8 @@
         <ul class="nav nav-tabs w-75">
             <li class="nav-item"> <a class="nav-link active" href="#history">History</a> </li>
             <li class="nav-item"> <a class="nav-link" href="#">Reports</a> </li>
-        </ul> <button class="btn btn-primary">Buy Credits</button>
+        </ul>
+        <%= link_to "Buy Credits", payment_path, :class=>"btn btn-primary"%>
     </div>
     <div class="table-responsive mt-3">
         <table class="table table-dark table-borderless">
@@ -39,12 +40,12 @@
                         <td><span class="fa fa-cc-mastercard"></span></td>
                         <td class="text-muted"><%= (p.created_at).strftime("%d %b %Y %r") %></td>
                         <td class="d-flex justify-content-end align-items-center"> <span
-                            class="fa fa-long-arrow-down mr-1"></span> +<%= p.credits_increment %> </td>
+                            class="fa fa-long-arrow-up mr-1"></span> +<%= p.credits_increment %> </td>
                     <% else %>
                         <td><span class="fa fa-coins"></span></td>
                         <td class="text-muted"><%= (p.created_at).strftime("%d %b %Y %r") %></td>
                         <td class="d-flex justify-content-end align-items-center"> <span
-                            class="fa fa-long-arrow-up mr-1"></span> -<%= p.credits_decrement %> </td>
+                            class="fa fa-long-arrow-down mr-1"></span> -<%= p.credits_decrement %> </td>
                     <% end %>
                 </tr>
                 <% end %>

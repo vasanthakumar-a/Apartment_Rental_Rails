@@ -616,19 +616,6 @@ padding: 24px 1rem !important;
 
 // Payment History
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Poppins&display=swap');
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box
-}
-
-body {
-    background-color: #777;
-    font-family: 'Poppins', sans-serif
-}
-
 .wrapper {
     background-color: #222;
     min-height: 100px;
@@ -719,7 +706,8 @@ body {
 }
 
 .fa-long-arrow-down,
-.fa-long-arrow-up {
+.fa-long-arrow-up,
+.fa-certificate {
     padding-left: 12px;
     padding-top: 8px;
     height: 30px;
@@ -727,11 +715,11 @@ body {
     border-radius: 50%;
     font-size: 1rem;
     font-weight: 100;
-    color: #28df99
+    color: #ffa500
 }
 
 .fa-long-arrow-up {
-    color: #ffa500
+    color: #28df99
 }
 
 .nav.nav-tabs {
