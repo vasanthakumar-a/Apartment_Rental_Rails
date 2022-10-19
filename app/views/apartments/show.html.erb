@@ -1,8 +1,5 @@
 <%= render 'navbar' %>
 
-<%# <%= link_to "Edit Apartment", edit_apartment_path %>
-<%# <%= link_to "Delete Apartment", apartment_path, method: :delete, data: { confirm: "Are you sure?" } %>
-
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% if @apartment.image.attached? %>
@@ -150,12 +147,12 @@
             <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
                 <div class="card-body">
                 <% if user_signed_in? %>
-                    <%= link_to 'Get Owner Details', owner_details_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
-                <% elsif owner_signed_in? and current_owner.id = @apartment.owner_id %>
+                    <%= link_to 'Get Owner Details', reduce_credit_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                <% elsif owner_signed_in? and current_owner.id == @apartment.owner_id %>
                     <%= link_to "Edit Apartment Details", edit_apartment_path, :class => 'btn btn-primary mt-2 ml-sm-0' %>
                     <%= link_to 'Delete Apartment', apartment_path, method: :delete, :class => 'btn btn-danger m-2 ml-sm-0' %>
                 <% elsif owner_signed_in? %>
-                    <%= link_to 'Get Owner Details', apartment_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+                    <%= link_to 'Get Owner Details', reduce_credit_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' %>
                 <% else %>
                     <%= link_to 'Get Owner Details', new_user_session_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
                 <% end %>

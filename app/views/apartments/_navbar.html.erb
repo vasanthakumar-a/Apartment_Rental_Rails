@@ -10,17 +10,19 @@
     <div class="navbar-text float-right">
     <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
+          <li> <%= link_to "Credits : #{current_user.credits.to_i}", payment_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
           <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
           <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link btn my-2 my-sm-0' %> </li>
         <% elsif owner_signed_in? %>
-          <li><%= link_to "My Apartments", my_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
-          <li><%= link_to "Create New Apartment", new_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
+          <li> <%= link_to "Credits : #{current_owner.credits.to_i}", payment_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
+          <li> <%= link_to "My Apartments", my_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
+          <li> <%= link_to "Create New Apartment", new_apartment_path, :class => 'nav-link btn my-2 my-sm-0' %></li>
           <li> <%= link_to 'Edit profile', edit_owner_registration_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
           <li> <%= link_to "Logout", destroy_owner_session_path, method: :delete, :class => 'nav-link btn my-2 my-sm-0' %> </li>
         <% else %>
-          <li> <%= link_to "Owner Login", new_owner_session_path, :class => 'nav-link' %> </li>
-          <li> <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link' %> </li>
-          <li> <%= link_to "Login", new_user_session_path, :class => 'nav-link' %> </li>
+          <li> <%= link_to "Owner Login", new_owner_session_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
+          <li> <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
+          <li> <%= link_to "Login", new_user_session_path, :class => 'nav-link btn my-2 my-sm-0' %> </li>
         <% end %>
     </ul>
     </div>
