@@ -71,7 +71,7 @@ image_list = [
     parking: [true,false].sample,
     sewage: [true,false].sample,
     posted_date: Date.today,
-    owner_id: [5,6,7].sample
+    owner_id: [1,2,3].sample
   }
   apartments.push(new_apartment)
 end
