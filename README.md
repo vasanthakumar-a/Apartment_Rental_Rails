@@ -1,24 +1,23 @@
-# README
+Prerequisites
+The setups steps expect following tools installed on the system.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    *Github
+    *Ruby 3.0.4
+    *Rails 6.1.7
+    
+1. Check out the repository
 
-Things you may want to cover:
+  *git clone github.com/vasanthakumar-a/Apartment_Rental_Rails.git
 
-* Ruby version
+2. Create and setup the database
 
-* System dependencies
+Run the following commands to create and setup the database.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  *rails db:create:all
+  *rails db:migrate
+  
+3. Start the Rails server
+You can start the rails server using the command given below.
+  *rails server
+ 
+And now you can visit the site with the URL http://localhost:3000
