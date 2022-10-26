@@ -29,7 +29,6 @@ class ApartmentsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def reduce_credit
     if user_signed_in?
       @credits = User.find(current_user.id)
@@ -43,8 +42,6 @@ class ApartmentsController < ApplicationController
     @credits.save
   end
 
-=======
->>>>>>> master
   def show
   end
 
@@ -97,7 +94,7 @@ class ApartmentsController < ApplicationController
 
     redirect_to root_path
   end
-  
+
   def find_apartment
     @apartment = Apartment.find(params[:id])
   end
