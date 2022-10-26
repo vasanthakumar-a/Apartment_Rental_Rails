@@ -19,7 +19,7 @@ class Apartment < ApplicationRecord
   validates :property_type, presence: :true
   validates :posted_date, presence: :true
 
-  scope :filter_by, -> (location) { where("location like ?", "%#{location}%")}
-  scope :filter_by_search_location, -> (search_location) { where("location like ?", "%#{search_location}%")}
+  scope :filter_by, -> (location) { where("location ilike ?", "%#{location}%")}
+  scope :filter_by_search_location, -> (search_location) { where("location ilike ?", "%#{search_location}%")}
   scope :filter_by_owner_id, -> (owner_id) { where owner_id: owner_id }
 end

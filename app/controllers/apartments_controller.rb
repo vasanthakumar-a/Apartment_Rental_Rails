@@ -1,13 +1,14 @@
 class ApartmentsController < ApplicationController
 
   # before_action :authenticated_user_or_owner?
+  before_action :find_apartment,only:[:show, :edit, :update, :destroy]
 
   def index
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
   end
 
   def list
-    @apartments = Apartment.filter_by(params[:search].capitalize).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
+    @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
     # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
   end
 
@@ -28,8 +29,23 @@ class ApartmentsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+  def reduce_credit
+    if user_signed_in?
+      @credits = User.find(current_user.id)
+      @credits.credits -= 1
+    elsif owner_signed_in?
+      @credits = Owner.find(current_owner.id)
+      @credits.credits -= 1
+    else
+      redirect_to user_session_path
+    end
+    @credits.save
+  end
+
+=======
+>>>>>>> master
   def show
-    @apartment = Apartment.find(params[:id])
   end
 
   def new
@@ -66,12 +82,9 @@ class ApartmentsController < ApplicationController
   end
 
   def edit
-    @apartment = Apartment.find(params[:id])
   end
 
   def update
-    @apartment = Apartment.find(params[:id])
-
     if @apartment.update(apartment_params)
       redirect_to @apartment
     else
@@ -80,13 +93,17 @@ class ApartmentsController < ApplicationController
   end
 
   def destroy
-    @apartment = Apartment.find(params[:id])
     @apartment.destroy
 
     redirect_to root_path
   end
+  
+  def find_apartment
+    @apartment = Apartment.find(params[:id])
+  end
 
   private
+
   def apartment_params
     params.require(:apartment).permit(
       :apartment_name,
@@ -120,4 +137,5 @@ class ApartmentsController < ApplicationController
       image: []
     )
   end
+
 end
