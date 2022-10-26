@@ -49,16 +49,24 @@ class PaymentsController < ApplicationController
     @payment_history.credits_decrement = 1
     if user_signed_in?
       @credits = User.find(current_user.id)
+      if @credits.credits <= 0
+        redirect_to payment_path
+        return 
+      end
       @credits.credits -= 1
       @payment_history.user_id = current_user.id
     elsif owner_signed_in?
       @credits = Owner.find(current_owner.id)
+      if @credits.credits <= 0
+        redirect_to payment_path
+        return 
+      end
       @credits.credits -= 1
       @payment_history.owner_id = current_owner.id
     else
       redirect_to user_session_path
     end
-
+    
     if @credits.save and @payment_history.save
       redirect_to owner_details_path
     else
