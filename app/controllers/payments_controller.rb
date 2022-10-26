@@ -19,19 +19,11 @@ class PaymentsController < ApplicationController
   end
 
   def new_payment
-    # @payment_history = PaymentHistory.new()
-    # @payment_history.message = "Created Payment for Adding Credits"
-    # @payment_history.mode = "Credit Card"
-    # @payment_history.credits_increment = 10
 
     if user_signed_in?
-      # @credits = User.find(current_user.id)
-      # @credits.credits += 10
-      @payment_history.user_id = current_user.id
+      @credits = User.find(current_user.id)
     elsif owner_signed_in?
-      # @credits = Owner.find(current_owner.id)
-      # @credits.credits += 10
-      @payment_history.owner_id = current_owner.id
+      @credits = Owner.find(current_owner.id)
     else
       redirect_to user_session_path
     end
