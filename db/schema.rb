@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_21_070241) do
+ActiveRecord::Schema.define(version: 2022_10_26_080157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,16 @@ ActiveRecord::Schema.define(version: 2022_10_21_070241) do
     t.bigint "user_id"
     t.index ["owner_id"], name: "index_credits_on_owner_id"
     t.index ["user_id"], name: "index_credits_on_user_id"
+  end
+
+  create_table "owner_details", force: :cascade do |t|
+    t.bigint "owner_id"
+    t.bigint "user_id"
+    t.bigint "apartment_owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "apartments_id"
+    t.index ["apartments_id"], name: "index_owner_details_on_apartments_id"
   end
 
   create_table "owners", force: :cascade do |t|

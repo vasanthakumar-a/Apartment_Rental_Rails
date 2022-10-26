@@ -28,6 +28,29 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  def show
+    @apartment = Apartment.find(params[:id])
+  end
+
+  def new
+    if current_owner.credits > 0
+      @apartment = Apartment.new
+    else
+      redirect_to payment_path and return
+    end
+  end
+
+  def create
+    @apartment = Apartment.new(apartment_params)
+    @apartment.owner_id = current_owner.id if owner_signed_in?
+    reduce_credit()
+    if @apartment.save
+      redirect_to @apartment
+    else
+      render :new
+    end
+  end
+
   def reduce_credit
     if user_signed_in?
       @credits = User.find(current_user.id)
@@ -39,29 +62,7 @@ class ApartmentsController < ApplicationController
       redirect_to user_session_path
     end
     @credits.save
-  end
-  def show
-    @apartment = Apartment.find(params[:id])
-  end
-
-  def new
-    @apartment = Apartment.new
-  end
-
-  def create
-    @apartment = Apartment.new(apartment_params)
-    @apartment.owner_id = current_owner.id if owner_signed_in?
-
-    if current_owner.credits > 0
-      reduce_credit()
-    else
-      redirect_to payment_path and return
-    end
-    if @apartment.save
-      redirect_to @apartment
-    else
-      render :new
-    end
+    payment_history("Apartment Created by using 1 Credit","Coin",false)
   end
 
   def edit
