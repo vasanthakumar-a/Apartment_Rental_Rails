@@ -1,0 +1,114 @@
+<%= render partial: "layouts/navbar" %>
+
+<div class="container">
+<br>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="people-nearby">
+
+            <% @my_token.each do |token| %>
+
+              <% apartment = Apartment.find(token.apartment_id) %>
+              <% if apartment %>
+
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-3 col-sm-2">
+                    <% if apartment.image.attached? %>
+                      <a href="<%= apartment.id %>"><%= image_tag apartment.image[1], :class=>"list-image" %></a>
+                    <% else %>
+                      <a href="<%= apartment.id %>">
+                        <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="list-image">
+                      </a>
+                    <% end %>
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                    <h5><a href="#" class="profile-link">
+                      <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location.capitalize, apartment %>
+                    </a></h5>
+                    <p><%= apartment.location %></p>
+                    <p><span class="badge badge-warning"> <%= apartment.review %> <i class="fa fa-star-o"></i></span></p>
+
+                    <div class="row border">
+                      <div class="col-4 mt-2">
+                        <p class="text-muted">Sq.ft</p>
+                        <h6 class="pb-2"><%= apartment.room_size.to_i %></h6>
+                      </div>
+                      <div class="col-4 mt-2">
+                        <p class="text-muted">Deposit</p>
+                        <h6 class="pb-2"><%= apartment.deposit %></h6>
+                      </div>
+                      <div class="col-4 mt-2">
+                        <p class="text-muted">Rent</p>
+                        <h6 class="pb-2"><%= apartment.rent %></h6>
+                      </div>
+                    </div>
+
+                    <div class="row border mt-2">
+                      <div class="col-6">
+                        <div class="m-2 p-2">
+                          <div class="row">
+                            <div class="col-2">
+                              <i class="fas fa-chair mt-3" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                              <h6 class="d-inline mr-1"><%= apartment.furnishing_status.capitalize %></h6>
+                              <p class=" mr-1 mb-0 text-muted">Furnishing Status</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="m-2 p-2">
+                          <div class="row">
+                            <div class="col-2">
+                              <i class="fa fa-users mt-3" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                              <h6 class="d-inline mr-1"><%= apartment.tenant.capitalize %></h6>
+                              <p class=" mr-1 mb-0 text-muted">Prefered Tenant</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 mt-2">
+                        <div class="m-2 p-2">
+                          <div class="row">
+                            <div class="col-2">
+                              <i class="fas fa-building mt-3" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                              <h6 class="d-inline mr-1"><%= apartment.bedrooms %> BHK</h6>
+                              <p class=" mr-1 mb-0 text-muted">Apartment Type</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="m-2 p-2">
+                          <div class="row">
+                            <div class="col-2">
+                              <i class="fa fa-home mt-3" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-10">
+                              <h6 class="d-inline mr-1"><%= apartment.property_type.capitalize %></h6>
+                              <p class=" mr-1 mb-0 text-muted">Property Type</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-3">
+                    <%= link_to 'View Full Details', apartment, :class=>"btn btn-primary pull-right" %>
+                    <%= link_to 'Remove Favourite', token, :class => 'btn btn-danger pull-right mt-3' %>
+                  </div>
+                </div>
+              </div>
+
+              <% end %>
+            <% end %>
+
+            </div>
+    	</div>
+	</div>
+</div>
+

@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   get '/apartments/my_apartment', to: 'apartments#my_apartment', as: 'my_apartment'
   get '/apartments/:id/owner_details', to: 'apartments#owner_details', as: 'owner_details'
   post '/apartments/:id/owner_details', to: 'payments#reduce_credit', as: 'reduce_credit'
+  post '/apartments/:id', to: 'wishlist#add', as: 'add'
+
+  resources :wishlist
 
   resources :apartments do
     get 'page/:page', action: :index, on: :collection
   end
 
-  match "/404", to: "errors#not_found",via: :all
-  match "/500", to: "errors#internal_server_error",via: :all
+  # match "/404", to: "errors#not_found",via: :all
+  # match "/500", to: "errors#internal_server_error",via: :all
 end
