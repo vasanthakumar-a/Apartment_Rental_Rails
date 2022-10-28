@@ -19,7 +19,7 @@ class WishlistController < ApplicationController
   def show
     wishlist_delete()
     redirect_to wishlist_index_path and return
-  end
+  end  
 
   def wishlist_delete
     @wish = Wishlist.find(params[:id])

@@ -17,7 +17,12 @@ class Apartment < ApplicationRecord
   validates :balcony, presence: :true
   validates :furnishing_status, presence: :true
   validates :property_type, presence: :true
-  validates :posted_date, presence: :true
+  validates :posted_date, presence: :true  
+
+  validates_numericality_of   :bedrooms    
+  validates_numericality_of   :bathrooms 
+  validates_numericality_of   :balcony 
+  validates_numericality_of   :building_age       
 
   scope :filter_by, -> (location) { where("location ilike ?", "%#{location}%")}
   scope :filter_by_search_location, -> (search_location) { where("location ilike ?", "%#{search_location}%")}

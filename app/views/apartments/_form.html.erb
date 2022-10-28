@@ -86,7 +86,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
                                         <%= form.label 'No of Bedrooms', :class=>"form-label" %>
-                                        <%= form.text_field :bedrooms, :class=>"form-control", :placeholder=>"No of Bedrooms" %>
+                                        <%= form.number_field :bedrooms, value: 1, min: 1, :class=>"form-control", :placeholder=>"No of Bedrooms" %>
                                         <% @apartment.errors.full_messages_for(:bedrooms).each do |message| %>
                                             <div><%= puts message %></div>
                                         <% end %>
@@ -95,18 +95,19 @@
 								<div class="col-md-6">
 									<div class="form-group">
                                     <%= form.label 'No of Bathrooms', :class=>"form-label" %>
-                                        <%= form.text_field :bathrooms, :class=>"form-control", :placeholder=>"No of Bathrooms" %>
+                                        <%= form.number_field :bathrooms, value: 1, min: 1, :class=>"form-control", :placeholder=>"No of Bathrooms" %>
                                         <% @apartment.errors.full_messages_for(:bathrooms).each do |message| %>
                                             <div><%= puts message %></div>
                                         <% end %>
 									</div>
 								</div>
-							</div>
+							</div> 
                             <div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
                                         <%= form.label 'Age of Building', :class=>"form-label" %>
-                                        <%= form.text_field :building_age, :class=>"form-control", :placeholder=>"Age of Building" %>
+                                        <%= form.number_field :building_age, value: 1, min: 1, :class=>"form-control", :placeholder=>"Age of Building" %>
+                                        
                                         <% @apartment.errors.full_messages_for(:building_age).each do |message| %>
                                             <div><%= puts message %></div>
                                         <% end %>
@@ -115,7 +116,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
                                     <%= form.label 'No of Balconies', :class=>"form-label" %>
-                                        <%= form.text_field :balcony, :class=>"form-control", :placeholder=>"No of Balconies" %>
+                                        <%= form.number_field :balcony, value: 0, min: 0, :class=>"form-control", :placeholder=>"No of Balconies" %>
                                         <% @apartment.errors.full_messages_for(:balcony).each do |message| %>
                                             <div><%= puts message %></div>
                                         <% end %>
