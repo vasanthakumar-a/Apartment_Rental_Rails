@@ -10,4 +10,4 @@ class CreateOwnerDetails < ActiveRecord::Migration[6.1]
     end
     add_reference :owner_details, :apartments, index: true, null: true
   end
-end
+end   

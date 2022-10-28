@@ -9,14 +9,14 @@
         </div>
     <% @apartment.image.each do |img| %>
         <div class="carousel-item">
-        <%= image_tag img, :class=>"d-block w-100" %>
+        <%= image_tag img, :class=>"d-block w-100"%>
         </div>
-    <% end %>
+    <% end %>  
     <% else %>
         <div class="carousel-item active">
             <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="d-block w-100">
         </div>
-    <% end %>
+    <% end %>    
 
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -87,9 +87,12 @@
                                 <i class="fa fa-tint" aria-hidden="true"></i>
                                 <div class="d-inline ml-2">Water Supply</div>
                             </div>
+
+                           
+
                             <div class="d-block m-4 pr-1">
                                 <i class="fa fa-bath" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Bathrooms </div>
+                                <div class="d-inline ml-2">Bathrooms </div>  
                             </div>
                             <div class="d-block m-4 pr-1">
                                 <i class="fa fa-bed" aria-hidden="true"></i>
@@ -117,11 +120,15 @@
                                 <div class="d-inline ml-2"><%= @apartment.furnishing_status.capitalize %></div>
                             </div>
                             <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><% if @apartment.water_supply %>Yes<%else%>No<%end%></div>
-                            </div>
+                                <div class="d-inline ml-2"><% if @apartment.water_supply %> Yes <% else %>No<%end%></div>
+                            </div>  
+
+                           
+
+
                             <div class="d-block m-4 pr-1">
                                 <div class="d-inline ml-2"><%= @apartment.bathrooms %></div>
-                            </div>
+                            </div>  
                             <div class="d-block m-4 pr-1">
                                 <div class="d-inline ml-2"><%= @apartment.bedrooms %></div>
                             </div>

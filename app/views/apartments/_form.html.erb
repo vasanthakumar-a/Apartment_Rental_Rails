@@ -178,7 +178,15 @@
                                             <i class="fa fa-fire-extinguisher ml-2" aria-hidden="true"></i>
                                             <div class="d-inline ml-2">
                                                 <%= form.label 'Fire Safety' %>
-                                                <%= form.check_box :lift %>
+                                                <%= form.check_box :lift %> 
+                                            </div>
+                                        </div>
+
+                                        <div class="d-inline m-4 pr-1">
+                                            <i class="fa fa-tint  ml-2" aria-hidden="true"></i>
+                                            <div class="d-inline ml-2">
+                                                <%= form.label 'Water-Supply' %>
+                                                <%= form.check_box :water_supply %>  
                                             </div>
                                         </div>
 									</div>
@@ -213,6 +221,8 @@
                                                 <%= form.check_box :sewage %>
                                             </div>
                                         </div>
+
+                                        
 									</div>
 								</div>
 							</div>
