@@ -2,10 +2,10 @@
 <% if @apartments.size == 0 %>
  <div class="text-sm-center mt-100">
  <img src = "https://media.istockphoto.com/vectors/man-is-shrugging-with-a-curious-expression-search-solution-modern-vector-id1159227933?k=20&m=1159227933&s=612x612&w=0&h=tidgxr4nVyq9yyUTLFB9XXayqgFYMg5ZLbj-JUN_xMg=", class="list-image">
- <h1>No apartments found in this location</h1>  
+ <h1>Oops!! Invalid Page Number</h1>
    <%= link_to 'Go Home', root_path, :class=>"btn btn-danger" %>
- </div>  
-<% end %>
+ </div>
+ <% else %>
 <div class="container">
 <br>
 <% if @apartments %>
@@ -119,3 +119,4 @@
     <%= paginate @apartments %>
   <% end %>
 </div>
+<% end %>
