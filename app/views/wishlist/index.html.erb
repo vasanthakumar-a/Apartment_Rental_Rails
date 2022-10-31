@@ -8,9 +8,9 @@
         <div class="col-md-12">
             <div class="people-nearby">
 
-            <% @my_token.each do |token| %>
+            <% @wishlists.each do |wishlist| %>
 
-              <% apartment = Apartment.find(token.apartment_id) %>
+              <% apartment = Apartment.find(wishlist.apartment_id) %>
               <% if apartment %>
 
               <div class="nearby-user">
@@ -99,7 +99,7 @@
                   </div>
                   <div class="col-md-2 col-sm-3">
                     <%= link_to 'View Full Details', apartment, :class=>"btn btn-primary pull-right" %>
-                    <%= link_to 'Remove Favourite', token, :class => 'btn btn-danger pull-right mt-3' %>
+                    <%= link_to 'Remove Favourite', wishlist, :class => 'btn btn-danger pull-right mt-3' %>
                   </div>
                 </div>
               </div>
