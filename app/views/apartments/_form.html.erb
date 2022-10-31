@@ -7,9 +7,9 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-                                        <%= form.label 'Image', :class=>"form-label" %>
+                                        <%= form.label 'Apartment Photos', :class=>"form-label" %>
                                         <%= form.file_field :image, multiple: true, :class=>"form-control", :placeholder=>"" %>
-                                        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
+                                        <% @apartment.errors.full_messages_for(:image).each do |message| %>
                                             <div><%= puts message %></div>
                                         <% end %>
 									</div>
