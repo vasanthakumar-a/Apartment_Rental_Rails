@@ -8,10 +8,13 @@
 								<div class="col-md-12">
 									<div class="form-group">
                                         <%= form.label 'Image', :class=>"form-label" %>
-                                        <%= form.file_field :image, multiple: true, :class=>"form-control", :placeholder=>"" %>
-                                        <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
-                                            <div><%= puts message %></div>
+                                        <%= form.file_field :image, multiple: true, :class=>"form-control" %>
+                                        <div class="text-white">
+                                        <% @apartment.errors.full_messages_for(:image).each do |message| %>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                        </div>
+                                        
 									</div>
 								</div>
 							</div>
@@ -20,18 +23,22 @@
 									<div class="form-group">
                                         <%= form.label 'Apartment Name', :class=>"form-label" %>
                                         <%= form.text_field :apartment_name, :class=>"form-control", :placeholder=>"Apartment Name" %>
+                                      <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:apartment_name).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
-									</div>
+                                        </div>
+									</div> 
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
                                     <%= form.label 'Location', :class=>"form-label" %>
                                         <%= form.text_field :location, :class=>"form-control", :placeholder=>"Location" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:location).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                       </div>
 									</div>
 								</div>
 							</div>
@@ -40,9 +47,11 @@
 									<div class="form-group">
                                         <%= form.label 'Description', :class=>"form-label" %>
                                         <%= form.text_area :description, :class=>"form-control text-area", :placeholder=>"Description" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:description).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                       </div>
 									</div>
 								</div>
 							</div>
@@ -51,34 +60,42 @@
 									<div class="form-group">
                                         <%= form.label 'Deposit', :class=>"form-label" %>
                                         <%= form.text_field :deposit, :class=>"form-control", :placeholder=>"Deposit" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:deposit).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                        </div>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
                                         <%= form.label 'Rent', :class=>"form-label" %>
                                         <%= form.text_field :rent, :class=>"form-control", :placeholder=>"Rent" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:rent).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                        </div>
 									</div>
 								</div>
                                 <div class="col-md-4">
 									<div class="form-group">
                                     <%= form.label 'Room Size (Sq Ft)', :class=>"form-label" %>
                                         <%= form.text_field :room_size, :class=>"form-control", :placeholder=>"Room Size" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:room_size).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= message %>)</div>
                                         <% end %>
+                                        </div>
 									</div>
                                     <div class="d-none">
                                     <%= form.label 'Review', :class=>"form-label" %>
                                         <%= form.text_field :review, :value=>5, :placeholder=>"Review" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:review).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= puts message %>)</div>
                                         <% end %>
+                                        </div>
 									</div>
 								</div>
 							</div>
@@ -87,9 +104,11 @@
 									<div class="form-group">
                                         <%= form.label 'No of Bedrooms', :class=>"form-label" %>
                                         <%= form.number_field :bedrooms, value: 1, min: 1, :class=>"form-control", :placeholder=>"No of Bedrooms" %>
+                                        <div class="text-white">
                                         <% @apartment.errors.full_messages_for(:bedrooms).each do |message| %>
-                                            <div><%= puts message %></div>
+                                            <div>(<%= puts message %>)</div>
                                         <% end %>
+                                        </div>
 									</div>
 								</div>
 								<div class="col-md-6">

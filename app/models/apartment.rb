@@ -18,37 +18,26 @@ class Apartment < ApplicationRecord
   validates :furnishing_status, presence: :true
   validates :property_type, presence: :true
   validates :posted_date, presence: :true    
+  # validates :image, content_type: ['image/jpg', 'image/png']
+  validates :image, attached: true, content_type: [:png, :jpg, :jpeg]
 
   validates_numericality_of   :bedrooms    
   validates_numericality_of   :bathrooms 
   validates_numericality_of   :balcony 
-  validates_numericality_of   :building_age       
+  validates_numericality_of   :building_age           
 
-  scope :filter_by, -> (location) { where("location ilike ?", "%#{location}%")}
+  scope :filter_by, -> (location) { where("location ilike ?", "%#{location}%")}  
   scope :filter_by_search_location, -> (search_location) { where("location ilike ?", "%#{search_location}%")}
   scope :filter_by_owner_id, -> (owner_id) { where owner_id: owner_id }
-
-  # validate :upload_is_image
-
-  # private  
-
-  # def upload_is_image
-  #   unless upload and upload.content_type =~ /^image\/(jpeg|pjpeg|gif|png|bmp)$/
-  #     errors.add(:upload, "Not a valid image")
-  #   end
-  # end
-
-  # validate :image_type 
-
+  
+  # validate :correct_image_type
+  
   # private 
-  # def image_type
-  #    if images_attached? == false 
-  #      errors.add(:images, "are missing")
-  #    end 
+  
 
-  #    images.each do |image| 
-  #     if !image.content_type.in?(%('image/jpg image/png'))
-  #       errors.add(:images, 'needs to be a valid type')
-  #     end 
+  # def correct_image_type
+  #   if image.attached? && !image.blob.content_type.in?(%w('image/jpg image/png'))
+  #     errors.add(:image, 'needs to be a valid type')
+  #   end   
   # end  
 end
