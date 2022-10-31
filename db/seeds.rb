@@ -13,6 +13,13 @@ image_list = [
   'https://images1.apartments.com/i2/3qaSJ8RE61MX7jpOpcY1VvdzYZYaH8w80_IPagi4VCY/117/summerhouse-lakewood-ranch-fl-building-photo.jpg'
 ]
 
+@owners = []
+Owner.select(:id).each do |owner|
+  @owners << owner.id
+end
+
+puts "### #{@owners} ###"
+
 100.times do |i|
   new_apartment = {
     apartment_name: Faker::Name.last_name,
@@ -71,7 +78,7 @@ image_list = [
     parking: [true,false].sample,
     sewage: [true,false].sample,
     posted_date: Date.today,
-    owner_id: [1,2,3].sample
+    owner_id: @owners.sample
   }
   apartments.push(new_apartment)
 end

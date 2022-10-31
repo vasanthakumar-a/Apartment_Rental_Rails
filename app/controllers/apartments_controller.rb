@@ -67,15 +67,15 @@ class ApartmentsController < ApplicationController
   def reduce_credit
     if user_signed_in?
       @credits = User.find(current_user.id)
-      @credits.credits -= 1
     elsif owner_signed_in?
       @credits = Owner.find(current_owner.id)
-      @credits.credits -= 1
     else
       redirect_to user_session_path
     end
-    @credits.save
-    payment_history("Apartment Created by using 1 Credit","Coin",false)
+    @credits.credits -= 1
+    if @credits.save
+      payment_history("Apartment Created by using 1 Credit","Coin",false)
+    end
   end
 
   def edit
