@@ -5,11 +5,11 @@
     <% if @apartment.image.attached? %>
 
     <div class="carousel-item active">
-        <%= image_tag @apartment.image[0], :class=>"d-block w-100" %>
+        <%= image_tag @apartment.image[0], :class=>"d-block w-50" %>
         </div>
     <% @apartment.image.each do |img| %>
         <div class="carousel-item">
-        <%= image_tag img, :class=>"d-block w-100"%>
+        <%= image_tag img, :class=>"d-block w-50"%>
         </div>
     <% end %>  
     <% else %>
