@@ -41,9 +41,8 @@ class WishlistController < ApplicationController
     @wishlist.user_id = current_user.id if user_signed_in?
     @wishlist.owner_id = current_owner.id if owner_signed_in?
     @wishlist.apartment_id = params[:id]
-    if @wishlist.save
-      redirect_to payment_history_path
-    end
+    @wishlist.save
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

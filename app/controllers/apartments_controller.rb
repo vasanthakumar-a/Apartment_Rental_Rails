@@ -43,6 +43,13 @@ class ApartmentsController < ApplicationController
   end
 
   def show
+    @wishlists = Wishlist.filter_by_apartment_owner(current_owner.id).select(:apartment_id) if owner_signed_in?
+    @wishlists = Wishlist.filter_by_apartment_user(current_user.id).select(:apartment_id) if user_signed_in?
+
+    @wishlist_apartment_id = []
+    @wishlists.each do |wishlist|
+      @wishlist_apartment_id << wishlist.apartment_id
+    end
   end
 
   def new
