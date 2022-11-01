@@ -1,17 +1,15 @@
 <%= render 'navbar' %>
 <div class="wizelite wizelite-fluid ">
-        <div class="container text-center my-5 py-5">
-            <h1 class="text-white mb-3">Stay Comfort at Anywhere</h1>
-            <h1 class="text-white display-1 mb-4">WizElite</h1>
-            <div class="mx-auto mb-5" style="width: 100%; max-width: 750px;">
-
-              <div class="booking-form">
-                <form action="/apartments/list">
-
-                      <%= form_with do |form| %>
-                      <div class="row">
-                          <div class="col-3 form-btn">
-                              <%= form.select :search,[ "Ariyalur",
+  <div class="container text-center my-5 py-5">
+    <h1 class="text-white mb-3">Stay Comfort at Anywhere</h1>
+    <h1 class="text-white display-1 mb-4">WizElite</h1>
+    <div class="mx-auto mb-5" style="width: 100%; max-width: 750px;">
+      <div class="booking-form">
+        <form action="/apartments/list">
+          <%= form_with do |form| %>
+            <div class="row">
+              <div class="col-3 form-btn">
+                <%= form.select :search,[ "Ariyalur",
                                                         "Chennai",
                                                         "Coimbatore",
                                                         "Cuddalore",
@@ -44,18 +42,18 @@
                                                         "Viluppuram",
                                                         "Virudhunagar"
                                                         ] ,{}, {:class=>"form-control"}%>
-                          </div>
-                          <div class=" col-9 form-btn">
-                            <%= form.text_field :search_location, :class=>"form-control", :style=>"padding: 30px 25px;", :placeholder=>"Location" %>
-                          </div>
-                      </div>
-                      <div class="form-btn">
-                        <%= form.submit 'Search', method: :get, :class=>"submit-btn" %>
-                      </div>
-                      <% end %>
-                    </form>
-                </div>
+              </div>
+              <div class=" col-9 form-btn">
+                <%= form.text_field :search_location, :class=>"form-control", :style=>"padding: 30px 25px;", :placeholder=>"Location" %>
               </div>
             </div>
-        </div>
+            <div class="form-btn">
+              <%= form.submit 'Search', method: :get, :class=>"submit-btn" %>
+            </div>
+          <% end %>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
+</div>

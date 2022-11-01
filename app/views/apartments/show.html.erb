@@ -1,252 +1,239 @@
 <%= render 'navbar' %>
 <div class="container">
-<div class="card mt-3">
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <% if @apartment.image.attached? %>
-
-    <div class="carousel-item active">
-        <%= image_tag @apartment.image[0], :class=>"d-block w-100" %>
-        </div>
-    <% @apartment.image.each do |img| %>
-        <div class="carousel-item">
-        <%= image_tag img, :class=>"d-block w-100" %>
-        </div>
-    <% end %>
-    <% else %>
-        <div class="carousel-item active">
+  <div class="card mt-3">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <% if @apartment.image.attached? %>
+          <div class="carousel-item active">
+            <%= image_tag @apartment.image[0], :class=>"d-block w-100" %>
+          </div>
+          <% @apartment.image.each do |img| %>
+            <div class="carousel-item">
+              <%= image_tag img, :class=>"d-block w-100" %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="carousel-item active">
             <img src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/06/Benefits-of-booking-accomodation-early.jpg?fit=1000%2C561&ssl=1" class="d-block w-100">
-        </div>
-    <% end %>
-
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
-</div>
-
-
-<div class="container">
+          </div>
+        <% end %>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
     <div class="row mt-3 justify-content-center border">
-    <div class="col-lg-1 border-right">
-    <img src="https://raw.githubusercontent.com/vasanthakumar-a/Apartment_Rental_Rails/Reset_App_form_Models/app/assets/images/ze%20logo.png" height="50px" width="50px" class="mt-4">
-    </div>
-    <div class="col-lg-5 border-right">
+      <div class="col-lg-1 border-right">
+        <img src="https://raw.githubusercontent.com/vasanthakumar-a/Apartment_Rental_Rails/Reset_App_form_Models/app/assets/images/ze%20logo.png" height="50px" width="50px" class="mt-4">
+      </div>
+      <div class="col-lg-5 border-right">
         <div class="d-block">
-            <h5 class="pt-3"><%= @apartment.bedrooms.to_s+" BHK "+@apartment.property_type+" In "+@apartment.apartment_name.capitalize+" For Rent In "+@apartment.location.capitalize %></h5>
-        </div>
-        <div class="d-block">
-            <p class="text-muted"><%= @apartment.location %></p>
-        </div>
-    </div>
-    <div class="col-lg-2 border-right">
-        <div class="d-block">
-            <h6 class="pt-3"><%= @apartment.room_size.to_i %></h6>
+          <h5 class="pt-3"><%= @apartment.bedrooms.to_s+" BHK "+@apartment.property_type+" In "+@apartment.apartment_name.capitalize+" For Rent In "+@apartment.location.capitalize %></h5>
         </div>
         <div class="d-block">
-            <p class="text-muted">Sq.ft</p>
+          <p class="text-muted"><%= @apartment.location %></p>
         </div>
-    </div>
-    <div class="col-lg-2 border-right">
-    <div class="d-block">
-            <h6 class="pt-3"><%= number_to_currency(@apartment.deposit, :unit=> '₹ ') %></h6>
+      </div>
+      <div class="col-lg-2 border-right">
+        <div class="d-block">
+          <h6 class="pt-3"><%= @apartment.room_size.to_i %></h6>
         </div>
         <div class="d-block">
-            <p class="text-muted">Deposit</p>
+          <p class="text-muted">Sq.ft</p>
         </div>
-    </div>
-    <div class="col-lg-2">
-    <div class="d-block">
-            <h6 class="pt-3"><%= number_to_currency(@apartment.rent, :unit => '₹ ') %>/month</h6>
+      </div>
+      <div class="col-lg-2 border-right">
+        <div class="d-block">
+          <h6 class="pt-3"><%= number_to_currency(@apartment.deposit, :unit=> '₹ ') %></h6>
         </div>
         <div class="d-block">
-            <p class="text-muted">Rent</p>
+          <p class="text-muted">Deposit</p>
         </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="d-block">
+          <h6 class="pt-3"><%= number_to_currency(@apartment.rent, :unit => '₹ ') %>/month</h6>
+        </div>
+        <div class="d-block">
+          <p class="text-muted">Rent</p>
+        </div>
+      </div>
     </div>
-    </div>
-
-
-
     <div class="row mt-4 justify-content-center">
-        <div class="col-lg-8 border">
-            <div class="mt-3 text-start mb-1-6 wow fadeIn">
-                <h4 class="mb-0">Overview</h4>
-            </div>
-            <div class="row">
-                <div class="col-6 justify-content">
-                    <div class="ps-lg-1-6 ps-xl-5">
-                        <div class="mb-5 wow fadeIn">
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-home" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Furnishing Status</div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-tint" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Water Supply</div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-bath" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Bathrooms </div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-bed" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Bedrooms </div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Prefered Tenant </div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-building" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Property Type </div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Posted Date </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="ps-lg-1-6 ps-xl-5">
-                        <div class="mb-5 wow fadeIn">
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.furnishing_status.capitalize %></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><% if @apartment.water_supply %>Yes<%else%>No<%end%></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.bathrooms %></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.bedrooms %></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.tenant.capitalize %></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.property_type.capitalize %></div>
-                            </div>
-                            <div class="d-block m-4 pr-1">
-                                <div class="d-inline ml-2"><%= @apartment.posted_date %></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="col-lg-8 border">
+        <div class="mt-3 text-start mb-1-6 wow fadeIn">
+          <h4 class="mb-0">Overview</h4>
         </div>
-
-        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
-
+        <div class="row">
+          <div class="col-6 justify-content">
+            <div class="ps-lg-1-6 ps-xl-5">
+              <div class="mb-5 wow fadeIn">
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Furnishing Status</div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-tint" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Water Supply</div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-bath" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Bathrooms </div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-bed" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Bedrooms </div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Prefered Tenant </div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Property Type </div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  <div class="d-inline ml-2">Posted Date </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="ps-lg-1-6 ps-xl-5">
+              <div class="mb-5 wow fadeIn">
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.furnishing_status.capitalize %></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><% if @apartment.water_supply %>Yes<%else%>No<%end%></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.bathrooms %></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.bedrooms %></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.tenant.capitalize %></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.property_type.capitalize %></div>
+                </div>
+                <div class="d-block m-4 pr-1">
+                  <div class="d-inline ml-2"><%= @apartment.posted_date %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
         <%# Transactions Box %>
-
-            <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
-                <div class="card-body">
-                <% if owner_signed_in? and current_owner.id == @apartment.owner_id %>
-                    <%= link_to "Edit Apartment Details", edit_apartment_path, :class => 'btn btn-primary mt-2 ml-sm-0' %>
-                    <%= link_to 'Delete Apartment', apartment_path, method: :delete, :class => 'btn btn-danger m-2 ml-sm-0' %>
-                <% elsif user_signed_in? or owner_signed_in? %>
-                    <%= link_to 'Get Owner Details', reduce_credit_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' %>
-                    <% if @wishlist_apartment_id.to_a.include?(params[:id].to_i) %>
-                        <%= link_to wishlist_index_path, :class => 'btn btn-danger m-2 ml-sm-0' do %>
-                            <i class="fa fa-check-circle"></i> Already Favourite
-                        <% end %>
-                    <% else %>
-                        <%= link_to add_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' do %>
-                            <i class="fa fa-star"></i> Add to Favourite
-                        <% end %>
-                    <% end %>
-                <% else %>
-                    <%= link_to 'Get Owner Details', new_user_session_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+        <div class="card mt-5 border-1 shadow-lg p-3 mb-5 bg-black rounded">
+          <div class="card-body">
+            <% if owner_signed_in? and current_owner.id == @apartment.owner_id %>
+              <%= link_to "Edit Apartment Details", edit_apartment_path, :class => 'btn btn-primary mt-2 ml-sm-0' %>
+              <%= link_to 'Delete Apartment', apartment_path, method: :delete, :class => 'btn btn-danger m-2 ml-sm-0' %>
+            <% elsif user_signed_in? or owner_signed_in? %>
+              <%= link_to 'Get Owner Details', reduce_credit_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' %>
+              <% if @wishlist_apartment_id.to_a.include?(params[:id].to_i) %>
+                <%= link_to wishlist_index_path, :class => 'btn btn-danger m-2 ml-sm-0' do %>
+                  <i class="fa fa-check-circle"></i> Already Favourite
                 <% end %>
-                </div>
-            </div>
+              <% else %>
+                <%= link_to add_path, method: :post, :class => 'btn btn-danger m-2 ml-sm-0' do %>
+                  <i class="fa fa-star"></i> Add to Favourite
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to 'Get Owner Details', new_user_session_path, :class => 'btn btn-danger m-2 ml-sm-0' %>
+            <% end %>
+          </div>
         </div>
+      </div>
     </div>
-
     <div class="row mt-3 justify-content-left">
-        <div class="col-lg-8 border">
-            <div class="mt-3 text-start mb-1-6 wow fadeIn">
-                <h4 class="mb-0">Description</h4>
-            </div>
-            <div class="row">
-                <div class="col-12 justify-content">
-                    <div class="ps-lg-1-6 ps-xl-5">
-                        <div class="mb-5 wow fadeIn">
-                            <div class="d-block m-4 pr-1">
-                                <p class="card-text"><%= @apartment.description %></p>
-                            </div>
-                        </div>
-                    </div>
+      <div class="col-lg-8 border">
+        <div class="mt-3 text-start mb-1-6 wow fadeIn">
+          <h4 class="mb-0">Description</h4>
+        </div>
+        <div class="row">
+          <div class="col-12 justify-content">
+            <div class="ps-lg-1-6 ps-xl-5">
+              <div class="mb-5 wow fadeIn">
+                <div class="d-block m-4 pr-1">
+                  <p class="card-text"><%= @apartment.description %></p>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
     <div class="row mt-3 mb-5 justify-content-left">
-        <div class="col-lg-8 border">
-            <div class="mt-3 text-start mb-1-6 wow fadeIn">
-                <h4 class="mb-0">Aminities</h4>
-            </div>
-            <div class="row m-3">
-                <div class="col-12 justify-content">
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.lift %>
-                                <i class="fa-solid fa-elevator ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Lift</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.wifi %>
-                                <i class="fa fa-wifi ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Wifi</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.ac %>
-                                <i class="fas fa-digital-tachograph ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">AC</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.fire_safety %>
-                                <i class="fa fa-fire-extinguisher ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Fire Safety</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.security %>
-                                <i class="fas fa-user-shield ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Security</div>
-                            <% end %>
-                            </div>
-                        <div class="d-inline m-4 pr-1">
-                            <% if @apartment.house_keeping %>
-                                <i class="fas fa-broom ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">House Keeping</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.parking %>
-                                <i class="fas fa-parking ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Parking</div>
-                            <% end %>
-                            </div>
-                            <div class="d-inline m-4 pr-1">
-                            <% if @apartment.sewage %>
-                                <i class="fa fa-trash-o ml-2" aria-hidden="true"></i>
-                                <div class="d-inline ml-2">Sewage</div>
-                            <% end %>
-            </div>
+      <div class="col-lg-8 border">
+        <div class="mt-3 text-start mb-1-6 wow fadeIn">
+          <h4 class="mb-0">Aminities</h4>
         </div>
+        <div class="row m-3">
+          <div class="col-12 justify-content">
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.lift %>
+                <i class="fa-solid fa-elevator ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Lift</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.wifi %>
+                <i class="fa fa-wifi ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Wifi</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.ac %>
+                <i class="fas fa-digital-tachograph ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">AC</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.fire_safety %>
+                <i class="fa fa-fire-extinguisher ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Fire Safety</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.security %>
+                <i class="fas fa-user-shield ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Security</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.house_keeping %>
+                <i class="fas fa-broom ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">House Keeping</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.parking %>
+                <i class="fas fa-parking ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Parking</div>
+              <% end %>
+            </div>
+            <div class="d-inline m-4 pr-1">
+              <% if @apartment.sewage %>
+                <i class="fa fa-trash-o ml-2" aria-hidden="true"></i>
+                <div class="d-inline ml-2">Sewage</div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
-</div>

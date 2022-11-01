@@ -1,24 +1,21 @@
 <%= render 'navbar' %>
 <% if @apartments.size == 0 %>
- <div class="text-sm-center mt-100">
- <img src = "https://media.istockphoto.com/vectors/man-is-shrugging-with-a-curious-expression-search-solution-modern-vector-id1159227933?k=20&m=1159227933&s=612x612&w=0&h=tidgxr4nVyq9yyUTLFB9XXayqgFYMg5ZLbj-JUN_xMg=", class="list-image">
- <h1>Oops!! Invalid Page Number</h1>
-   <%= link_to 'Go Home', root_path, :class=>"btn btn-danger" %>
- </div>
- <% else %>
-<div class="container">
-<br>
-<% if @apartments %>
-  <%= paginate @apartments %>
-<% end %>
-
+  <div class="text-sm-center mt-100">
+    <img src = "https://media.istockphoto.com/vectors/man-is-shrugging-with-a-curious-expression-search-solution-modern-vector-id1159227933?k=20&m=1159227933&s=612x612&w=0&h=tidgxr4nVyq9yyUTLFB9XXayqgFYMg5ZLbj-JUN_xMg=", class="list-image">
+    <h1>Oops!! Invalid Page Number</h1>
+    <%= link_to 'Go Home', root_path, :class=>"btn btn-danger" %>
+  </div>
+<% else %>
+  <div class="container">
+    <br>
+    <% if @apartments %>
+      <%= paginate @apartments %>
+    <% end %>
     <div class="row">
-        <div class="col-md-12">
-            <div class="people-nearby">
-
-            <% if @apartments %>
+      <div class="col-md-12">
+        <div class="people-nearby">
+          <% if @apartments %>
             <% @apartments.each do |apartment| %>
-
               <div class="nearby-user">
                 <div class="row">
                   <div class="col-md-3 col-sm-2">
@@ -32,11 +29,10 @@
                   </div>
                   <div class="col-md-7 col-sm-7">
                     <h5><a href="#" class="profile-link">
-                      <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location.capitalize, apartment %>
-                    </a></h5>
+                        <%= link_to apartment.bedrooms.to_s+" BHK "+apartment.property_type+" In "+apartment.apartment_name.capitalize+" For Rent In "+apartment.location.capitalize, apartment %>
+                      </a></h5>
                     <p><%= apartment.location %></p>
                     <p><span class="badge badge-warning"> <%= apartment.review %> <i class="fa fa-star-o"></i></span></p>
-
                     <div class="row border">
                       <div class="col-4 mt-2">
                         <p class="text-muted">Sq.ft</p>
@@ -51,7 +47,6 @@
                         <h6 class="pb-2"><%= apartment.rent %></h6>
                       </div>
                     </div>
-
                     <div class="row border mt-2">
                       <div class="col-6">
                         <div class="m-2 p-2">
@@ -108,15 +103,13 @@
                   </div>
                 </div>
               </div>
-
-              <% end %>
-              <% end %>
-
-            </div>
-    	</div>
-	</div>
-  <% if @apartments %>
-    <%= paginate @apartments %>
-  <% end %>
-</div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% if @apartments %>
+      <%= paginate @apartments %>
+    <% end %>
+  </div>
 <% end %>
