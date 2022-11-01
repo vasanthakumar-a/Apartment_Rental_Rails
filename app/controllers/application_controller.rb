@@ -26,11 +26,9 @@ class ApplicationController < ActionController::Base
   end
 
   def store_owner_details
-    @owner_details = OwnerDetail.new()
+    @owner_details = OwnerDetail.new(apartments_id: @apartment.id, apartment_owner_id: @apartment.owner_id)
     @owner_details.owner_id = current_owner.id if owner_signed_in?
     @owner_details.user_id = current_user.id if user_signed_in?
-    @owner_details.apartments_id = @apartment.id
-    @owner_details.apartment_owner_id = @apartment.owner_id
 
     @owner_details.save
   end
@@ -38,34 +36,27 @@ class ApplicationController < ActionController::Base
   def reduce_credit(message = "Used 1 Credit for Viewing Owner Detail")
     @apartment = Apartment.find(params[:id])
 
-    @my_token = OwnerDetail.filter_by_apartment_owner(current_owner.id) if owner_signed_in?
-    @my_token = OwnerDetail.filter_by_apartment_user(current_user.id) if user_signed_in?
-
-    @my_token.each do |apartment_owner|
-      if ( apartment_owner.apartment_owner_id == @apartment.owner_id and apartment_owner.apartments_id ==  @apartment.id )
-      redirect_to owner_details_path and return
+    if authenticated_user_or_owner?
+      @owner_details = ( user_signed_in? ?
+        OwnerDetail.filter_by_apartment_user(current_user.id) :
+        OwnerDetail.filter_by_apartment_owner(current_owner.id)
+      )
+      @owner_details.each do |apartment_owner|
+        if ( apartment_owner.apartment_owner_id == @apartment.owner_id and apartment_owner.apartments_id ==  @apartment.id )
+          redirect_to owner_details_path and return
+        end
       end
     end
-
-    if user_signed_in?
-
+    if authenticated_user_or_owner?
+      @credits = user_signed_in? ? User.find(current_user.id) : Owner.find(current_owner.id)
       @credits = User.find(current_user.id)
-      if @credits.credits <= 0
-        redirect_to payment_path and return
-      end
-      @credits.credits -= 1
-    elsif owner_signed_in?
-
-      @credits = Owner.find(current_owner.id)
-      if @credits.credits <= 0
-        redirect_to payment_path
-        return
-      end
-      @credits.credits -= 1
     else
       redirect_to user_session_path
     end
-
+    if @credits.credits <= 0
+      redirect_to payment_path and return
+    end
+    @credits.credits -= 1
     if @credits.save and payment_history(message,"Coin",false) and store_owner_details()
       redirect_to owner_details_path
     else
