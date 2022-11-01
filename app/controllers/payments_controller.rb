@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
 
   def index
-    if !(user_signed_in? or owner_signed_in?)
+    unless authenticated_user_or_owner?
       redirect_to user_session_path
     end
   end
@@ -9,27 +9,22 @@ class PaymentsController < ApplicationController
   def payment
     if user_signed_in?
       @user = current_user.id
-      new_payment()
     elsif owner_signed_in?
       @owner = current_owner.id
-      new_payment()
     else
       redirect_to user_session_path
     end
+    new_payment()
   end
 
   def new_payment
 
-    if user_signed_in?
-      @credits = User.find(current_user.id)
-    elsif owner_signed_in?
-      @credits = Owner.find(current_owner.id)
+    if authenticated_user_or_owner?
+      @credits = user_signed_in? ? User.find(current_user.id) : Owner.find(current_owner.id)
     else
       redirect_to user_session_path
     end
-
     @credits.credits += 10
-
     if @credits.save and payment_history("Created Payment for Adding Credits","Credit Card",true)
       redirect_to apartments_path
     else
@@ -38,12 +33,11 @@ class PaymentsController < ApplicationController
   end
 
   def history
-    if user_signed_in?
-      @credits = User.find(current_user.id)
-      @payment_history = PaymentHistory.filter_history_by_user_id(current_user.id)
-    elsif owner_signed_in?
-      @credits = Owner.find(current_owner.id)
-      @payment_history = PaymentHistory.filter_history_by_owner_id(current_owner.id)
+    if authenticated_user_or_owner?
+      @credits = user_signed_in? ? User.find(current_user.id) : Owner.find(current_owner.id)
+      @payment_history = user_signed_in? ?
+        PaymentHistory.filter_history_by_user_id(current_user.id) :
+        PaymentHistory.filter_history_by_owner_id(current_owner.id)
     else
       redirect_to user_session_path
     end
