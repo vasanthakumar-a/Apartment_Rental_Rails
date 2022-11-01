@@ -1,27 +1,27 @@
 class ApartmentsController < ApplicationController
 
-  # before_action :authenticated_user_or_owner?
-  before_action :find_apartment,only:[:show, :edit, :update, :destroy]
+  before_action :find_apartment, only: [:show, :edit, :update, :destroy]
 
   def index
     @apartments = Apartment.order(:apartment_name).page(params[:page]).per(2)
   end
 
   def list
-    @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search].present?
-    # @apartment = Apartment.filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2) if params[:search_location].present?
+    if params[:search].present?
+      @apartments = Apartment.filter_by(params[:search].capitalize).filter_by_search_location(params[:search_location].downcase).order(:apartment_name).page(params[:page]).per(2)
+    end
   end
 
   def my_apartment
     if owner_signed_in?
-      @apartments = Apartment.filter_by_owner_id(current_owner.id).order(:apartment_name).page(params[:page]).per(2) if current_owner.id.present?
+      @apartments = Apartment.filter_by_owner_id(current_owner.id).order(:apartment_name).page(params[:page]).per(2)
     else
       redirect_to owner_session_path
     end
   end
 
   def owner_details
-    if owner_signed_in? or user_signed_in?
+    if authenticated_user_or_owner?
       @apartment = Apartment.find(params[:id])
       @owner = Owner.find(@apartment.owner_id)
     else
@@ -29,26 +29,17 @@ class ApartmentsController < ApplicationController
     end
   end
 
-  def reduce_credit
-    if user_signed_in?
-      @credits = User.find(current_user.id)
-      @credits.credits -= 1
-    elsif owner_signed_in?
-      @credits = Owner.find(current_owner.id)
-      @credits.credits -= 1
-    else
-      redirect_to user_session_path
-    end
-    @credits.save
-  end
-
   def show
-    @wishlists = Wishlist.filter_by_apartment_owner(current_owner.id).select(:apartment_id) if owner_signed_in?
-    @wishlists = Wishlist.filter_by_apartment_user(current_user.id).select(:apartment_id) if user_signed_in?
+    if authenticated_user_or_owner?
+      @wishlists = ( user_signed_in? ?
+        Wishlist.filter_by_apartment_user(current_user.id) :
+        Wishlist.filter_by_apartment_owner(current_owner.id)
+      ).select(:apartment_id)
 
-    @wishlist_apartment_id = []
-    @wishlists.each do |wishlist|
-      @wishlist_apartment_id << wishlist.apartment_id
+      @wishlist_apartment_id = []
+      @wishlists.each do |wishlist|
+        @wishlist_apartment_id << wishlist.apartment_id
+      end
     end
   end
 
@@ -72,10 +63,8 @@ class ApartmentsController < ApplicationController
   end
 
   def reduce_credit
-    if user_signed_in?
-      @credits = User.find(current_user.id)
-    elsif owner_signed_in?
-      @credits = Owner.find(current_owner.id)
+    if authenticated_user_or_owner?
+      @credits = (user_signed_in?) ? User.find(current_user.id) : Owner.find(current_owner.id)
     else
       redirect_to user_session_path
     end
@@ -98,15 +87,14 @@ class ApartmentsController < ApplicationController
 
   def destroy
     @apartment.destroy
-
     redirect_to root_path
   end
+
+  private
 
   def find_apartment
     @apartment = Apartment.find(params[:id])
   end
-
-  private
 
   def apartment_params
     params.require(:apartment).permit(
