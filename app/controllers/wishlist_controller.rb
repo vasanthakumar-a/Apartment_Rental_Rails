@@ -1,9 +1,10 @@
 class WishlistController < ApplicationController
 
   def index
-    if user_signed_in? or owner_signed_in?
-      @wishlists = Wishlist.filter_by_apartment_owner(current_owner.id) if owner_signed_in?
-      @wishlists = Wishlist.filter_by_apartment_user(current_user.id) if user_signed_in?
+    if authenticated_user_or_owner?
+      @wishlists = user_signed_in? ?
+        Wishlist.filter_by_apartment_user(current_user.id) :
+        Wishlist.filter_by_apartment_owner(current_owner.id)
     else
       redirect_to user_session_path
     end
@@ -19,8 +20,9 @@ class WishlistController < ApplicationController
 
   def wishlist_delete
     @wish = Wishlist.find(params[:id])
-    @wish_user_id = (@wish.user_id == current_user.id) if user_signed_in?
-    @wish_user_id = (@wish.owner_id == current_owner.id) if owner_signed_in?
+    @wish_user_id = user_signed_in? ?
+      (@wish.user_id == current_user.id) :
+      (@wish.owner_id == current_owner.id)
     if @wish_user_id
       @wish.destroy
     end
