@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <button
       class="navbar-toggler"
       type="button"
@@ -19,10 +19,10 @@
       <% if owner_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "My Apartments", my_apartment_path, :class => 'nav-link' %>
+          <%= link_to "My Apartments", my_apartment_path, :class => 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to "New Apartment", new_apartment_path, :class => 'nav-link' %>
+          <%= link_to "New Apartment", new_apartment_path, :class => 'nav-link text-dark' %>
         </li>
       </ul>
       <% end %>
@@ -30,28 +30,21 @@
 
     <div class="d-flex align-items-center">
       <% if authenticated_user_or_owner?%>
-      <%= link_to wishlist_index_path, :class => 'text-reset me-3' do %>
-        <i class="fa fa-bookmark"></i>
+      <%= link_to wishlist_index_path, :class => 'text-reset nav-link' do %>
+        <i class="fa fa-bookmark text-danger"></i>
       <% end %>
-      <%= link_to payment_path, :class => 'text-reset me-3' do %>
-        <i class="fas fa-coins"></i>
-        <span class="badge bg-danger"><%=current_credits.to_i%></span>
+      <%= link_to payment_path, :class => 'nav-link' do %>
+        <i class="fas fa-coins text-dark"></i>
+        <span class="badge bg-danger text-light"><%=current_credits.to_i%></span>
       <% end %>
       <% else %>
-            <%= link_to 'Owner Login', new_owner_session_path, :class => 'text-reset me-3' %>
-            <%= link_to 'Signup', new_user_registration_path, :class => 'text-reset me-3' %>
-            <%= link_to 'Login', new_user_session_path, :class => 'text-reset me-3' %>
+            <%= link_to 'Owner Login', new_owner_session_path, :class => 'nav-link text-dark' %>
+            <%= link_to 'Signup', new_user_registration_path, :class => 'nav-link text-dark' %>
+            <%= link_to 'Login', new_user_session_path, :class => 'nav-link text-dark' %>
       <%end%>
 
       <div class="dropdown">
-        <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if image_attached? %>
           <%= image_tag profile_image, class: "rounded-circle", height: "30" %>
           <% else %>
@@ -62,32 +55,17 @@
           />
           <% end %>
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <% if authenticated_user_or_owner? %>
-          <li>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% if authenticated_user_or_owner? %>
             <%= link_to 'My profile', edit_profile, :class => 'dropdown-item' %>
-          </li>
-          <li>
             <%= link_to 'Settings', edit_profile, :class => 'dropdown-item' %>
-          </li>
-          <li>
           <%= link_to "Logout", destroy_owner_session_path, method: :delete, :class => 'dropdown-item' %>
-          </li>
           <% else %>
-          <li>
             <%= link_to 'Owner Login', new_owner_session_path, :class => 'dropdown-item' %>
-          </li>
-          <li>
             <%= link_to 'Signup', new_user_registration_path, :class => 'dropdown-item' %>
-          </li>
-          <li>
             <%= link_to 'Login', new_user_session_path, :class => 'dropdown-item' %>
-          </li>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
